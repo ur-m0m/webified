@@ -1,0 +1,108 @@
+span { font-size: 35px;}
+
+* { font-family: verdana;}
+
+	}
+body {	max-width: 100%;
+	height: auto;}
+	
+p { font-size: 200%;
+	text-align: center;
+	}
+h1 { font-size: 500%; 
+	text-align: center;
+	font-family: "verdana", geneva;
+	color: #5d5d5d;
+	}
+h4 { font-size: 100%;
+	text-align: center;
+	}
+div.menu{font-size: 150%;
+	height: 30%;
+	max-width: 100%;
+	border: 3px solid grey;
+	border-radius: 7px;
+	background-color:#5d5d5d;
+	vertical-align: top;
+	}
+
+.title{font-size: 150%;
+	max-width:99.05%;
+	height: auto;
+	width:100%;
+	border: 3px solid grey;
+	border-radius: 0 0 7px 7px;
+	background-color:#5d5d5d;
+	vertical-align: top;
+	position: fixed;}
+
+ul li{ display:inline;
+	text-align: center;
+	font-family:verdana;
+	height:60px;
+	box-sizing: border-box;
+	color: white;
+	padding:1%;
+	margin: 5%;
+	border-radius: 4px;
+	height: auto;
+	max-width: 100%;
+}
+ul li:hover { color: #8c8c8c;
+	background-color: black;}
+ul li#p { background-color: black;}
+ul li:hover {
+	min-width: 30%;
+	box-shadow: 0px 0px 3px 3px rgba(0 0 0 .3);}
+	
+a { text-decoration: none;}
+
+.dropdwnbtn{ color: white;
+	display: inline-block;
+	background-color: #5d5d5d;
+	position: relative;
+	padding: .5%;
+	margin: .5%;
+	border: 3px solid #5d5d5d;
+	border-radius: 3px;
+	}
+.dropdwn-content { display: none;
+	position: absolute;}
+
+	
+.dropdwnbtn:hover {
+	background-color: black;
+	color: #8c8c8c;
+	display: block;
+	padding:.5%;
+	margin: .5%;}
+.dropdwn:hover .dropdwn-content{ display: block; }
+
+a.menu :link { color: white;
+	
+	}
+a.menu :visited { color: white;
+	}
+a#t :link { color:#5d5d5d;
+	}
+a#t :visited { color: #5d5d5d;
+	}
+pre { display: inline; }
+
+#btn { font-size: 200%;
+	text-align: center;
+	background-color:#404040;
+	color: white;
+	border-radius: 2px;
+	border: 1px solid black;
+	}
+	
+#btn:hover {
+	background-color: black;
+	box-shadow: 1px 1px 1px grey;
+	}
+	
+input { font-size: 30px;
+	}
+	
+pre#h4 {font-size: 25px;}
