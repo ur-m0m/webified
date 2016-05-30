@@ -31,10 +31,11 @@ div.menu{font-size: 150%;
 	height: auto;
 	width:100%;
 	border: 3px solid grey;
-	border-radius: 0 0 7px 7px;
+	border-radius: 7px;
 	background-color:#5d5d5d;
 	vertical-align: top;
-	position: fixed;}
+	position: fixed;
+	padding: 1%;}
 
 ul li{ display:inline;
 	text-align: center;
@@ -53,34 +54,54 @@ ul li:hover { color: #8c8c8c;
 ul li#p { background-color: black;}
 ul li:hover {
 	min-width: 30%;
-	box-shadow: 0px 0px 3px 3px rgba(0 0 0 .3);}
+	}
 	
 a { text-decoration: none;}
-
-.dropdwnbtn{ color: white;
+a.p{ display: block;
+	padding: 2%; 
+	text-indent: 10px;}
+@-moz-keyframes drop{
+	0%{ display: none;
+		opacity: 0;}
+	10% { opacity: 0.98;}
+	100% { display: block;
+		opacity:1;}
+	}
+.dropdwn{ display: inline-block;
+	min-width:50px;
+	color: white;
+	transition: display 1s;
+	text-align: center;} 
+.dropdwnbtn{ 
+	color: white;
 	display: inline-block;
 	background-color: #5d5d5d;
 	position: relative;
-	padding: .5%;
-	margin: .5%;
 	border: 3px solid #5d5d5d;
-	border-radius: 3px;
-	}
-.dropdwn-content { display: none;
-	position: absolute;}
-
+	border-radius: 2px;
 	
-.dropdwnbtn:hover {
+	}
+.dropdwn-content { 
+	text-align: left;
+	display: none;
+	opacity:0;
+	position: absolute;
+	background-color: #DDDDDD;
+	box-shadow: 2px 2px 3px grey;
+	min-width: 200px;
+	border-radius: 5px;
+	animation-name: drop;
+	animation-duration: 15s;}
+	
+.dropdwn:hover {
 	background-color: black;
 	color: #8c8c8c;
-	display: block;
-	padding:.5%;
-	margin: .5%;}
-.dropdwn:hover .dropdwn-content{ display: block; }
-
-a.menu :link { color: white;
-	
+	border-radius: 5px;
 	}
+.dropdwn:hover .dropdwn-content{
+	display: block;}
+
+a.menu :link { color: white;}
 a.menu :visited { color: white;
 	}
 a#t :link { color:#5d5d5d;
