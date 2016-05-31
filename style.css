@@ -1,6 +1,7 @@
-span { font-size: 35px;}
+span { font-size: 200%;
+	text-align: center;}
 
-* { font-family: verdana;}
+*{ font-family: verdana;}
 
 	}
 body {	max-width: 100%;
@@ -133,8 +134,11 @@ pre { display: inline; }
 	background-color:#404040;
 	color: white;
 	border-radius: 2px;
+	position: relative;
+	left: 480px;
 	border: 1px solid black;
-	}
+	max-width:100%;
+	height: auto;}
 	
 #btn:hover {
 	background-color: black;
@@ -145,7 +149,9 @@ pre { display: inline; }
 	display: block;
 	} 
 
-input { font-size: 30px;
-	}
+input { font-size: 90%;
+	position: absolute;
+	max-width:100%;
+	height: auto;}
 	
 pre#h4 {font-size: 25px;}
