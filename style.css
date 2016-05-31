@@ -18,9 +18,9 @@ h4 { font-size: 100%;
 	text-align: center;
 	}
 div.menu{font-size: 150%;
-	height: 30%;
 	max-width: 100%;
-	border: 3px solid grey;
+	height: auto;
+	border: 2px solid grey;
 	border-radius: 7px;
 	background-color:#5d5d5d;
 	vertical-align: top;
@@ -37,26 +37,13 @@ div.menu{font-size: 150%;
 	position: fixed;
 	padding: 1%;}
 
-ul li{ display:inline;
-	text-align: center;
-	font-family:verdana;
-	height:60px;
-	box-sizing: border-box;
-	color: white;
-	padding:1%;
-	margin: 5%;
-	border-radius: 4px;
-	height: auto;
-	max-width: 100%;
-}
-ul li:hover { color: #8c8c8c;
+a.menu:hover { color: #8c8c8c;
 	background-color: black;}
-ul li#p { background-color: black;}
-ul li:hover {
-	min-width: 30%;
-	}
 	
+#p { background-color: black;}
+
 a { text-decoration: none;}
+
 a.p{ display: block;
 	padding: 2%; 
 	text-indent: 10px;}
@@ -67,6 +54,32 @@ a.p{ display: block;
 	100% { display: block;
 		opacity:1;}
 	}
+	
+@keyframes drop{
+	0%{ display: none;
+		opacity: 0;}
+	10% { opacity: 0.98;}
+	100% { display: block;
+		opacity:1;}
+	}
+
+@-o-keyframes drop{
+	0%{ display: none;
+		opacity: 0;}
+	10% { opacity: 0.98;}
+	100% { display: block;
+		opacity:1;}
+	}
+
+@-webkit-keyframes drop{
+	0%{ display: none;
+		opacity: 0;}
+	10% { opacity: 0.98;}
+	100% { display: block;
+		opacity:1;}
+	}
+
+
 .dropdwn{ display: inline-block;
 	min-width:50px;
 	color: white;
@@ -101,12 +114,17 @@ a.p{ display: block;
 .dropdwn:hover .dropdwn-content{
 	display: block;}
 
-a.menu :link { color: white;}
-a.menu :visited { color: white;
-	}
-a#t :link { color:#5d5d5d;
-	}
-a#t :visited { color: #5d5d5d;
+a.menu { display: inline-block;
+	text-align: center;
+	box-sizing: border-box;
+	color: white;
+	margin:.75%;
+	padding: .75%;
+	border-radius: 4px;
+	width: 31%;
+	height: auto;}
+	
+a#t{ color:#5d5d5d;
 	}
 pre { display: inline; }
 
@@ -123,6 +141,10 @@ pre { display: inline; }
 	box-shadow: 1px 1px 1px grey;
 	}
 	
+.opt { min-width: 200px;
+	display: block;
+	} 
+
 input { font-size: 30px;
 	}
 	
