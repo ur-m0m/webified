@@ -45,12 +45,11 @@
 
 </html>
 -->
-<body>
-
+<body id="bg-1">
 <div class="container-fluid">
 
 	<div class="row pagebar">
-	<div class="col-lg-4 page_information" >Page - </div>
+	<div class="col-lg-4 page_information" >Page</div>
 	<div class="col-lg-4 tools">Tools</div>
 	<div class="col-lg-2 "><button type="button" class="btn btn-primary">Preview</button></div>
 	<div class="col-lg-2 "><button type="button" class="btn btn-success">Save</button></div>
@@ -69,8 +68,8 @@
 		    		<div class="background-option">
 			    		<a href="#">Background</a>
 			    			<div class="dropdown-content-subcontent-background">
-			    				<a href="#">Link 2</a>
-			    				<a href="#">Link 3</a>
+			    				<div style="height:0px;overflow:hidden;"><input type="color" value="#FFFFFF" id="bg"></div><a href="#" class="bgcolor">Background Color</a>
+			    				<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput1"></div><a href="#" id="bgimage">Set an image</a>
 			    			</div>
 		    		</div>
 
@@ -86,15 +85,16 @@
 		    		<div class="image-option">
 			    		<a href="#">Image</a>
 			    			<div class="dropdown-content-subcontent-image">
-			    				<a href="#">Liiink 2</a>
-			    				<a href="#">Link 3</a>
+			    			<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput2"></div> 
+			    				<a href="#" id="imgupload">Upload an image</a>
+			    				<a href="#" id="urlimage2submit">Enter URL</a>
 			    			</div>
 		    		</div>
 		    		<div class="video-option">
 			    		<a href="#">Video</a>
 			    			<div class="dropdown-content-subcontent-video">
-			    				<a href="#">Liiiiink 2</a>
-			    				<a href="#">Link 3</a>
+			    				<a href="#" id="uploadvideo">Upload a video</a>
+			    				<a href="#" id="youtube">Youtube video</a>
 			    			</div>
 		    		</div>
 		    		<div class="button-option">
@@ -129,10 +129,10 @@
 			    				<a href="#">Link 3</a>
 			    			</div>
 		    		</div>
-		    		<div class="box-optionn">
+		    		<div class="box-option">
 			    		<a href="#">Box</a>
 			    			<div class="dropdown-content-subcontent-box">
-			    				<a href="#">Li8nk 2</a>
+			    				<a href="#" class="Rectangular-Box">Rectangular Box</a>
 			    				<a href="#">Link 3</a>
 			    			</div>
 		    		</div>
@@ -144,7 +144,6 @@
 			<div class="col-lg-11 text_page">Page
 			</div>
 		</div>
-		
 
 	</div>
 
@@ -152,15 +151,10 @@
 	<div class="col-lg-12 text_footer">Footer</div>
 	</div>
 	<hr>
-
 </div>
 
 </body>
 
 </html>
-
-
-
-
 
 
