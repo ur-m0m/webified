@@ -337,6 +337,11 @@ color: black;
  .text-small-paragraph{
  	font-size:70%;
  }
+ input[type="color"]{
+ 
+}
+ .ui-resizable-handle {
+  z-index: auto !important; }
 
 /*span { font-size: 200%;
 	text-align: center;}
