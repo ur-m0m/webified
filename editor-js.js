@@ -1128,8 +1128,9 @@ $("#fb-video").click(function(){
 	if(fbvideo!=null){
 		var dim='<div class="'+mn+'fb"></div>'
 		$("body").append(dim);
-		$("."+mn+"fb").html(fbvideo);
-	    $("."+mn+"fb").draggable().resizable();
+		$("."+mn+"fb").html(fbvideo+"<br><br><br>");
+	    $("."+mn+"fb").draggable();
+	    $("."+mn+"fb").css('position', 'absolute');
 	    mn=mn+1;
 	}
 	return;
@@ -1140,7 +1141,11 @@ $("#fb-video").click(function(){
 
 
 function myFunction(){
-	if(confirm("Are you sure to proceed? This page CANNOT be edited later. \n Caution: Spaces between Elements may increase in final output.")){document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
+	if(confirm("Are you sure to proceed? This page CANNOT be edited later. Contents WILL be overwritten irrespective of earlier contents. \n Caution: Spaces between Elements may increase in final output.")){$(".text-option-button").remove();
+    	$(".text-option-edit2").remove();
+    	$(".box-option-button").remove();
+    	$(".box-option-edit2").remove();
+document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
 	else{;}
 }
 

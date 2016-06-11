@@ -56,7 +56,7 @@ if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=re
 	<div class="col-lg-4 page_information" >Page</div>
 	<div class="col-lg-4 tools">Tools</div>
 	<div class="col-lg-2 "><button type="button" class="btn btn-primary">Preview</button></div>
-	<form id="hidform" method="post" action="post.php">
+	<form id="hidform" method="post" action="dont-dom_yopag_by-accessing-this-manually_dawg.php">
 	<input type="hidden" name=file id=success value="">
 	
 	<button class="btn btn-success" onclick="myFunction()">Save </button>
