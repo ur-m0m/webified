@@ -10,6 +10,8 @@
 	text-align:center;	
 }
 
+a{text-decoration:none;}
+
 .tools{
 	font-size: 200%;
 	text-align: center;
@@ -337,182 +339,26 @@ color: black;
  .text-small-paragraph{
  	font-size:70%;
  }
-
-/*span { font-size: 200%;
-	text-align: center;}
-
-*{ font-family: verdana;}
-
-	}
-body {	max-width: 100%;
-	height: auto;}
-	
-p { font-size: 200%;
-	text-align: center;
-	}
-h1 { font-size: 500%; 
-	text-align: center;
-	font-family: "verdana", geneva;
-	color: #5d5d5d;
-	}
-h4 { font-size: 100%;
-	text-align: center;
-	}
-div.menu{font-size: 150%;
-	max-width: 100%;
-	height: auto;
-	border: 2px solid grey;
-	border-radius: 7px;
-	background-color:#5d5d5d;
-	vertical-align: top;
-	}
-
-.title{font-size: 150%;
-	max-width:99.05%;
-	height: auto;
-	width:100%;
-	border: 3px solid grey;
-	border-radius: 7px;
-	background-color:#5d5d5d;
-	vertical-align: top;
-	position: fixed;
-	padding: 1%;}
-
-.add{font-size: 200%;
-	max-width:99.05%;
-	height: auto;
-	width:100%;
-	color: red;
-	vertical-align: top;
-	position: fixed;
-	padding: 1%;
-}	
-
-a.menu:hover { color: #8c8c8c;
-	background-color: black;}
-	
-#p { background-color: black;}
-
-a { text-decoration: none;}
-
-a.p{ display: block;
-	padding: 2%; 
-	text-indent: 10px;}
-@-moz-keyframes drop{
-	0%{ display: none;
-		opacity: 0;}
-	5% { opacity: 0.98;}
-	100% { display: block;
-		opacity:1;}
-	}
-	
-@keyframes drop{
-	0%{ display: none;
-		opacity: 0;}
-	10% { opacity: 0.98;}
-	100% { display: block;
-		opacity:1;}
-	}
-
-@-o-keyframes drop{
-	0%{ display: none;
-		opacity: 0;}
-	5% { opacity: 0.98;}
-	100% { display: block;
-		opacity:1;}
-	}
-
-@-webkit-keyframes drop{
-	0%{ display: none;
-		opacity: 0;}
-	5% { opacity: 0.98;}
-	100% { display: block;
-		opacity:1;}
-	}
-
-
-.dropdwn{ display: inline-block;
-	min-width:50px;
-	color: red;
-	border:1px solid black;
-	border-radius: 15px;
-	transition: display 1s;
-	text-align: center;} 
-.dropdwnbtn{ 
+.modal-title{background-color:#5D5D5D; 
 	color: white;
-	display: inline-block;
-	background-color: #5d5d5d;
-	position: relative;
-	border: 3px solid #5d5d5d;
-	border-radius: 20px;
+	font-size: 30px;
+	text-align: center;
+	padding: 10px;
+	display: block;}
+.modal{ display: block;
+	 height: 100%;
+	width: 100%;
+	 border: 3px solid grey;
 	
-	}
-.dropdwn-content { 
-	text-align: left;
-	display: none;
-	opacity:0;
-	position: absolute;
-	border-radius: 5px;
-	animation-name: drop;
-	animation-duration: 20s;
-}
-	
-
-.dropdwn:hover .dropdwn-content{
-	display: block;
-	border-radius: 5px;
-	color: black;
-
+	box-shadow: 0px 0 4px; 
 }
 
-a.menu { display: inline-block;
+.modal-heading{ 
 	text-align: center;
-	box-sizing: border-box;
-	color: white;
-	margin:.75%;
-	padding: .75%;
-	border-radius: 4px;
-	width: 31%;
-	height: auto;}
-	
-a#t{ color:#5d5d5d;
+	 font-size: 25px;
+	color: #ff3333;
 	}
-pre { display: inline; }
+.modal-content{ text-align: center; font-size: 18px;}
 
-#btn { font-size: 200%;
-	text-align: center;
-	background-color:#404040;
-	color: white;
-	border-radius: 2px;
-	position: relative;
-	left: 410px;
-	border: 1px solid black;
-	max-width:100%;
-	height: auto;}
-	
-#btn:hover {
-	background-color: black;
-	box-shadow: 1px 1px 1px grey;
-	}
-	
-.opt { min-width: 100px;
-	display: block;
-	border-radius: 5px;
-	padding: 5px;
-	margin: 5px;
 
-	} 
-.opt:hover {
-	color: green;
-    border-style: inset;
-	font-size: 50%;
-	padding: 5px
-}
 
-input { font-size: 90%;
-	position: absolute;
-	max-width:100%;
-	height: auto;}
-	
-pre#h4 {font-size: 25px;}
-*/

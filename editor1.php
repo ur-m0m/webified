@@ -20,47 +20,26 @@ if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=re
     src=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css"
     href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
-
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
 <script src="editor-js.js"></script>
 
 
 </head>
-
-<!--
-<div class=add>
-	<div class="dropdwn"><div class=dropdwn>ADD</div><br>
-		<div class="dropdwn-content">
-			<div class="dropdwn"><div class=dropdwn><button class=opt> TEXT</button></div>
-				<div class="dropdwn-content">
-					<button class=opt> IMAGES</button>
-					<button class=opt> VIDEOS</button>
-				</div>
-			</div>
-			<button class=opt> IMAGES</button>
-			<button class=opt> VIDEOS</button>
-		</div>
-	</div>
-
-	
-</div>
-<body>
-
-</body>
-
-</html>
--->
 <body id="body">
+<div id="modal" style="display:none; position:fixed; left:30%; top:35%; width:40%; height:30%;z-index:10000"></div>
 <div class="container-fluid">
 
 	<div class="row pagebar">
 	<div class="col-lg-4 page_information" >Page</div>
 	<div class="col-lg-4 tools">Tools</div>
 	<div class="col-lg-2 "><button type="button" class="btn btn-primary">Preview</button></div>
-	<form id="hidform" method="post" action="dont-dom_yopag_by-accessing-this-manually_dawg.php">
-	<input type="hidden" name=file id=success value="">
 	
-	<button class="btn btn-success" onclick="myFunction()">Save </button>
+<form id="hidform" method="post" action="finalpost.php">
+	<input type="hidden" name=file id=success value="">
 	</form>
+	<button class="btn btn-success" onclick="modalBox()">Save </button>
+	<button type="button" class="btn btn-primary" onclick="del()" style="background-color:#ff3333;">Cancel</button>
 	</div>
 	<div class="row header">
 	<div class="col-lg-12 text_header">Header</div>

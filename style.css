@@ -1,16 +1,17 @@
-span { font-size: 200%;
+span { font-size: 150%;
 	text-align: center;}
 
 *{ font-family: verdana;}
 
-	}
+code {font-family:"consolas";
+	font-size: 30px;}
 body {	max-width: 100%;
 	height: auto;}
 	
 p { font-size: 200%;
 	text-align: center;
 	}
-h1 { font-size: 500%; 
+h1 { font-size: 400%; 
 	text-align: center;
 	font-family: "verdana", geneva;
 	color: #5d5d5d;
@@ -135,7 +136,8 @@ pre { display: inline; }
 	color: white;
 	border-radius: 2px;
 	position: relative;
-	left: 410px;
+	left: 10px;
+	bottom:3px;
 	border: 1px solid black;
 	max-width:100%;
 	height: auto;}
@@ -148,6 +150,30 @@ pre { display: inline; }
 .opt { min-width: 200px;
 	display: block;
 	} 
+.modal-title{background-color:#5D5D5D; 
+	color: white;
+	font-size: 30px;
+	text-align: center;
+	padding: 10px;
+	display: block;}
+.modal{ display: block;
+	 height: 40%;
+	width: 30%;
+	 border: 3px solid grey;
+	border-radius: 5px;
+	color: #e6e6e6;
+	box-shadow: 0px 0 4px; 
+
+}
+
+.modal-heading{ 
+	text-align: center;
+	 font-size: 25px;
+	color: #ff3333;
+	}
+.modal-content{ text-align: center; font-size: 18px;}
+
+
 
 input { font-size: 90%;
 	position: absolute;

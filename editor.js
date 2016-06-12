@@ -65,11 +65,10 @@ $(document).ready(function(){
 
 	$('.text-large-heading').mouseenter(function(){
 		
-			var text_large_heading_text='<div class="'+mm+'" style="font-family:verdana;font-size:17px; font-weight:normal; position:absolute;top:'+y+'px;left:'+x+'px;"><h2 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_large_heading_text='<div class="'+mm+'" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><h2>\
   This is a heading</h2></div>';
 	$("body").append(text_large_heading_text);
-		$("."+mm).draggable({cancel: "h2"} ).resizable();
-	
+	$("."+mm).draggable({cancel:"h2"});
 	});
 
 	$('.text-large-heading').mouseleave(function(){
@@ -81,7 +80,6 @@ $(document).ready(function(){
 	
 		$("."+mm).remove();
 
-	
 	}
 	});
 
@@ -94,12 +92,10 @@ $(document).ready(function(){
 
 	$('.text-small-heading').mouseenter(function(){
 		
-			var text_small_heading_text='<div class="'+mm+' draggable"  style="font-family:verdana; font-weight: normal; font-size: 15px; position:absolute;top:'+y+'px;left:'+x+'px;"><h4 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_small_heading_text='<div class="'+mm+'" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><h4>\
   This is a heading</h4></div>';
 	$("body").append(text_small_heading_text);
-		$("."+mm).draggable({cancel: "h4"} ).resizable();
-
-	
+	$("."+mm).draggable({cancel:"h4"});
 	});
 
 	$('.text-small-heading').mouseleave(function(){
@@ -124,11 +120,10 @@ $(document).ready(function(){
 
 	$('.text-large-paragraph').mouseenter(function(){
 		
-			var text_large_paragraph_text='<div class="'+mm+'" style="font-size: 13px; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:110%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_large_paragraph_text='<div class="'+mm+'" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;font-size:110%"><p>\
   This is a paragraph</p></div>';
 	$("body").append(text_large_paragraph_text);
-	$("."+mm).draggable({cancel: "p"} ).resizable();
-	
+	$("."+mm).draggable({cancel:"p"});
 	});
 
 	$('.text-large-paragraph').mouseleave(function(){
@@ -154,12 +149,10 @@ $(document).ready(function(){
 
 	$('.text-small-paragraph').mouseenter(function(){
 		
-			var text_small_paragraph_text='<div class="'+mm+'" style="font-size: 10px; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:80%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_small_paragraph_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;font-size:80%"><p contenteditable=tRuE>\
   This is a paragraph</p></div>';
 	$("body").append(text_small_paragraph_text);
-		$("."+mm).draggable({cancel: "p"}).resizable();
-
-	
+	$("."+mm).draggable({cancel:"p"});
 	});
 
 	$('.text-small-paragraph').mouseleave(function(){
@@ -174,58 +167,33 @@ $(document).ready(function(){
 	
 	}
 	});
-
 	
+	
+	
+
 
 $(document).on('click', function(event) {
   if (!$(event.target).is(".text-option-button")) {
-
-  previous_clicked_classname="-1";
+  	//	alert($('.text-option-button').data('clicked'));
+  //	   if(text_option_button_data)
+  //	   { text_option_button_data=false	;}
+  //	alert("DFASfc");
     if(text_option_button_data){
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
-    	$(".box-option-button").remove();
-    	$(".box-option-edit2").remove();
-
-
+    	
     	text_option_button_data=false	;
 
 }
   }
 });
 			var text_option_button_data=false;
-			var previous_clicked_classname="-1";
+
 
 $(document).on('click', 'p',function(e){
-		var forclass=($(this).closest('div').attr("class"));
-		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
-		if(!text_option_button_data){
-			text_option_button_data=true;
-		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
-  <button type="button" class="btn btn-primary text-option-edit " >Edit</button>\
-  <div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate " data-toggle="dropdown" >\
-    Animate <span class="caret"></span></button>\
-    <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
-    </ul>\
-  </div>\
-  <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
-</div>';
-$("body").append(button_group);
-$('.text-option-button').draggable({cancel:false});
-
-}
-e.stopPropogation();
-
-	});
-$(document).on('click', 'h2',function(e){
-
-		var forclass=($(this).closest('div').attr("class"));
-		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
-				//alert(previous_clicked_classname);
-
+		//alert("ADca");
+		//var pos=$('this').position();
+		//alert(pos.top);
 		if(!text_option_button_data){
 			text_option_button_data=true;
 		//	alert(text_option_button_data);
@@ -235,51 +203,84 @@ $(document).on('click', 'h2',function(e){
     <button type="button" class="btn btn-primary dropdown-toggle text-option-animate draggable" data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#">Tablet</a></li>\
+      <li><a href="#">Smartphone</a></li>\
     </ul>\
   </div>\
-    <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
-$('.text-option-button').draggable({cancel:false});
-}
+$('.btn-group').draggable({cancel:false});
+//$('.text-option-move').draggable({cancel:false});
+	//$(".0").draggable( "option", "handle", ".text-option-move2" );
+
+//$(".text-option-move2").draggable();
+
 e.stopPropogation();
+}
 
 	});
-$(document).on('click', 'h4',function(e){
-
-		var forclass=($(this).closest('div').attr("class"));
-		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
-
+$(document).on('click', 'h2',function(e){
+		//alert("ADca");
+		//var pos=$('this').position();
+		//alert(pos.top);
 		if(!text_option_button_data){
 			text_option_button_data=true;
+		//	alert(text_option_button_data);
 		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle text-option-animate draggable" data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#">Tablet</a></li>\
+      <li><a href="#">Smartphone</a></li>\
     </ul>\
   </div>\
-    <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
-$('.text-option-button').draggable({cancel:false});
+$('.btn-group').draggable({cancel:false});
+//$('.text-option-move').draggable({cancel:false});
+	//$(".0").draggable( "option", "handle", ".text-option-move2" );
 
-}
+//$(".text-option-move2").draggable();
+
 e.stopPropogation();
+}
+
+	});
+$(document).on('click', 'h4',function(e){
+		//alert("ADca");
+		//var pos=$('this').position();
+		//alert(pos.top);
+		if(!text_option_button_data){
+			text_option_button_data=true;
+		//	alert(text_option_button_data);
+		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+  <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
+  <div class="btn-group">\
+    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate draggable" data-toggle="dropdown" >\
+    Animate <span class="caret"></span></button>\
+    <ul class="dropdown-menu" role="menu">\
+      <li><a href="#">Tablet</a></li>\
+      <li><a href="#">Smartphone</a></li>\
+    </ul>\
+  </div>\
+</div>';
+$("body").append(button_group);
+$('.btn-group').draggable({cancel:false});
+//$('.text-option-move').draggable({cancel:false});
+	//$(".0").draggable( "option", "handle", ".text-option-move2" );
+
+//$(".text-option-move2").draggable();
+
+e.stopPropogation();
+}
 
 	});
 
-$(document).on('click', '.delete-option',function(e){
 
-$('.'+previous_clicked_classname).remove();
-
-});
-
+   // $(function() {$(".draggable").draggable();});
+ // $('.dropdown-toggle').dropdown();
 $(document).on('click', '.Font-Family-Times_New_Roman',function(){
 	document.execCommand('fontName',false,"Times New Roman");});
 
@@ -401,6 +402,7 @@ $(document).on('click', '.Font-Size-32px',function(){
 $(document).on('click', '.text-option-edit',function(e){
 
 	$(".text-option-button").remove();
+	//alert("DFASfc");
 	var button_group='<div class="btn-group text-option-edit2" style="opacity:0.9;position:absolute;top:'+(300)+'px;right:'+(400)+'px;">\
 	\
 	<div class="btn-group">\
@@ -462,22 +464,14 @@ $(document).on('click',".text-option-edit-italics",function(){
 	
 	document.execCommand('italic',false,null);});
 
+//function font_family(font_name)
+//{
+//	alert("fa");
+//	document.execCommand('fontName',false,font_name);
+	
+//}
 
 
-
-/*        
-
-
-
-
-					   EVERYTHING BELOW IS NEW . ( FOR BACKEND WORK )
-
-
-
-
-
-
-*/
 
 
 
@@ -646,17 +640,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$(document).on('click', '.box-option-edit-border',function(e){
 
-$(".box-edit-color-options").remove();
-$(".box-edit-shadow-options").remove();
-$(".box-edit-border-options").remove();
-$(".box-edit-opacity-options").remove();
-
-var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-border-options">Border-Width : <input type="text" name="box_border_width" placeholder="Border width :  '+$("."+previous_clicked_classname).css("border-width")+'" class="box-option-edit-border-width-select" style="width:150px;"></div>	';
-var text2='<div style="position:absolute;top:70px;left:10px;display:inline;" class="box-edit-border-options"><br>Border-Radius : <br><input type="text" name="box_border_top_left_radius" placeholder="Top-Left :  '+$("."+previous_clicked_classname).css("border-top-left-radius")+'" class="box-option-edit-border-radius-topleft-select" style="width:120px;margin-right:10px;">\
+/*
+var text1='<div style="position:absolute;top:50px;left:10px;display:inline;">Border-Width : <input type="text" name="box_border_width" placeholder="Border width :  '+$("."+previous_clicked_classname).css("border-width")+'" class="box-option-edit-border-width-select" style="width:150px;"></div>	';
+var text2='<div style="position:absolute;top:70px;left:10px;display:inline;"><br>Border-Radius : <br><input type="text" name="box_border_top_left_radius" placeholder="Top-Left :  '+$("."+previous_clicked_classname).css("border-top-left-radius")+'" class="box-option-edit-border-radius-topleft-select" style="width:120px;margin-right:10px;">\
 <input type="text" name="box_border_top_rightradius" placeholder="Top-Right :  '+$("."+previous_clicked_classname).css("border-top-right-radius")+'" class="box-option-edit-border-radius-topright-select" style="width:120px;"><br>\
 <input type="text" name="box_border_bottom_left_radius" placeholder="Bottom-left :  '+$("."+previous_clicked_classname).css("border-bottom-left-radius")+'" class="box-option-edit-border-radius-bottomleft-select" style="width:120px;margin-right:10px;">\
 <input type="text" name="box_border_bottom_right_radius" placeholder="Bottom-right :  '+$("."+previous_clicked_classname).css("border-bottom-right-radius")+'" class="box-option-edit-border-radius-bottomright-select" style="width:120px;"></div>	';
-var text3='<div style="position:absolute;top:170px;left:10px;display:inline;" class="box-edit-border-options"><select class="box-option-edit-border-style">\
+var text3='<div style="position:absolute;top:170px;left:10px;display:inline;"><select class="box-option-edit-border-style">\
   <option value="0">Solid Border</option>\
   <option value="1">Dashed Border</option>\
   <option value="2">Double Border</option>\
@@ -764,16 +754,12 @@ $(document).on('change', '.box-option-edit-border-style',function(e){
 
 	$(document).on('click', '.box-option-edit-shadow',function(e){
 
-		$(".box-edit-shadow-options").remove();
-		$(".box-edit-color-options").remove();
-		$(".box-edit-border-options").remove();
-		$(".box-edit-opacity-options").remove();
 		var result=$("."+previous_clicked_classname).css("box-shadow").split(/\s+/);
 
-		var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-shadow-options">Shadow-Distance : <input type="text" name="box_shadow_distance" placeholder="Shadow Distance :  '+result[6]+'" class="box-option-edit-shadow-distance-select" style="width:150px;"></div>	';
-		var text2='<div style="position:absolute;top:70px;left:10px;display:inline;" class="box-edit-shadow-options"><br>Shadow Displacement from centre : <br><input type="text" name="box_shadow_horizontal" placeholder="Horizontal Distannce :  '+result[3]+'" class="box-option-edit-shadow-horizontal-select" style="width:120px;margin-right:10px;">\
+		var text1='<div style="position:absolute;top:50px;left:10px;display:inline;">Shadow-Distance : <input type="text" name="box_shadow_distance" placeholder="Shadow Distance :  '+result[6]+'" class="box-option-edit-shadow-distance-select" style="width:150px;"></div>	';
+		var text2='<div style="position:absolute;top:70px;left:10px;display:inline;"><br>Shadow Displacement from centre : <br><input type="text" name="box_shadow_horizontal" placeholder="Horizontal Distannce :  '+result[3]+'" class="box-option-edit-shadow-horizontal-select" style="width:120px;margin-right:10px;">\
 		<input type="text" name="box_shadow_vertical" placeholder="Vertical Distance :  '+result[4]+'" class="box-option-edit-shadow-vertical-select" style="width:120px;"></div>';
-		var text3='<div style="position:absolute;top:140px;left:10px;display:inline;" class="box-edit-shadow-options"><br>Shadow Blur : <input type="text" name="box_shadow_blur" placeholder="Shadow Blur :  '+result[5]+'" class="box-option-edit-shadow-blur-select" style="width:150px;"></div>	';
+		var text3='<div style="position:absolute;top:140px;left:10px;display:inline;"><br>Shadow Blur : <input type="text" name="box_shadow_blur" placeholder="Shadow Blur :  '+result[5]+'" class="box-option-edit-shadow-blur-select" style="width:150px;"></div>	';
 
 
 		$(".box-option-edit2").append(text1,text2,text3);
@@ -843,13 +829,9 @@ $(document).on('change', '.box-option-edit-shadow-blur-select',function(e){
 
 $(document).on('click', '.box-option-edit-opacity',function(e){
 
-$(".box-edit-color-options").remove();
-$(".box-edit-shadow-options").remove();
-$(".box-edit-border-options").remove();
-		$(".box-edit-opacity-options").remove();
 
-
-var text='<input type="text" name="box_opacity" placeholder="Opacity :  '+$("."+previous_clicked_classname).css("opacity")+'" class="box-option-edit-opacity-select box-edit-opacity-options" style="position:absolute;top:50px;width:100px;right:130px">	';
+alert($("."+previous_clicked_classname).css("opacity"));
+var text='<input type="text" name="box_opacity" placeholder="Opacity :  '+$("."+previous_clicked_classname).css("opacity")+'" class="box-option-edit-opacity-select" style="position:absolute;top:50px;width:100px;right:130px">	';
 
 $(".box-option-edit2").append(text);
 e.stopPropogation();
@@ -872,14 +854,8 @@ $(document).on('change', '.box-option-edit-opacity-select',function(e){
 
 
 $(document).on('click', '.box-option-edit-color-border',function(e){
-
-$(".box-edit-shadow-options").remove();
-$(".box-edit-border-options").remove();
-$(".box-edit-opacity-options").remove();
-$(".box-edit-color-options").remove();
-
 	$(".box-option-edit2").remove();
- 	var text='<input type="color" class="box-option-edit-color-border-select box-edit-color-options" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
+ 	var text='<input type="color" class="box-option-edit-color-border-select" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
  	$("body").append(text);
  	e.stopPropogation();
 
@@ -902,15 +878,8 @@ $(document).on('change', '.box-option-edit-color-border-select',function(){
 
 $(document).on('click', '.box-option-edit-color-fill',function(e){
 
-
-$(".box-edit-shadow-options").remove();
-$(".box-edit-border-options").remove();
-$(".box-edit-opacity-options").remove();
-$(".box-edit-color-options").remove();
-
-
 	$(".box-option-edit2").remove();
- 	var text='<input type="color" class="box-option-edit-color-fill-select box-edit-color-options" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
+ 	var text='<input type="color" class="box-option-edit-color-fill-select" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
  	$("body").append(text);
  	e.stopPropogation();
 
@@ -936,7 +905,6 @@ $("."+previous_clicked_classname).css("background-color",colorvalue);
 	$(document).on('click', '.box-option-edit',function(e){
 
 	$(".box-option-button").remove();
-	$(".box-edit-color-options").remove();
 
 	var button_group='<div class="btn-group box-option-edit2 draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary box-option-edit-border " >Border</button>\
@@ -960,12 +928,11 @@ e.stopPropogation();
 
 
 
+*/
 $(document).on('click', '.rectangular-box',function(e){
 
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
-
-		$(".box-edit-color-options").remove();
 
 		if(!text_option_button_data){
 			text_option_button_data=true;
@@ -991,7 +958,7 @@ e.stopPropogation();
 	});
 
 
-	$('.Rectangular-Box').click(function(){
+	/*$('.Rectangular-Box').click(function(){
 		$(this).data=('clicked',true);
 		x=x+50;
 		y=y+50;
@@ -1003,7 +970,7 @@ e.stopPropogation();
 
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
-			var box='<div class="'+mm+' rectangular-box" contenteditable=false style=" cursor:move; position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px;border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px"></div>';
+			var box='<div class="'+mm+' rectangular-box" contenteditable=false style="position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px;border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px"></div>';
 	$("body").append(box);
 	$("."+mm).draggable().resizable();
 	
@@ -1023,8 +990,13 @@ e.stopPropogation();
 	});
 
 
+});
 
 
+
+
+
+	
 		$("#bg").click(function(){
 		$("#bg").change(function(){
 			$("body").css("background-color",$("#bg").val());
@@ -1047,13 +1019,13 @@ e.stopPropogation();
 
 		function imageIsLoaded1(e){
 			$('body').css('background-image','url("'+e.target.result+'")');
-			$('bodypre').css('background-image','url("'+e.target.result+'")');
+			$("bodypre").css('background-image','url("'+e.target.result+'")');
 		};
 		$("#bgimage").click(function(){
 			$("#fileinput1").click();
 		});
 
-var x=300,y=300,mn=100;
+var x=300,y=300,mm=1;
 
 		$("#imgupload").click(function(){
 					$("#fileinput2").click();
@@ -1065,12 +1037,12 @@ var x=300,y=300,mn=100;
 	    			if(this.files && this.files[0] && special>0){
 	    			var reader=new FileReader();
 	    			reader.onload=function(e){
-	    				var imag='<img src="'+e.target.result+'" class="'+mn+'uploadedimage" alt="sorry!image not found" style="cursor:move;width:200px;height:200px;position:absolute;top:'+x+'px;left:'+y+'px">';
+	    				var imag='<img src="'+e.target.result+'" class="'+mm+'uploadedimage" alt="sorry!image not found" style="cursor:mOVe;width:200px;height:200px;position:absolute;top:'+x+'px;left:'+y+'px">';
 						$("body").append(imag);
-						$("."+mn+"uploadedimage").resizable({ghost:true}).parent().draggable();
+						$("."+mm+"uploadedimage").resizable({ghost:true}).parent().draggable();
 						x=x+100;
 						y=y+100;
-						mn=mn+1;
+						mm=mm+1;
 						special--;
 	    			};
 	    			reader.readAsDataURL(this.files[0]);
@@ -1082,14 +1054,14 @@ var x=300,y=300,mn=100;
 $("#urlimage2submit").click(function(){
 	var userurl=prompt("Enter URl of Image","");
 	if(userurl!=null){
-	var imag='<img src="'+userurl+'" class="'+mn+'urlimage" style="cursor:move;position:absolute;top:'+y+'px;left:'+x+'px;width:100px;height:100px;">'
+	var imag='<img src="'+userurl+'" class="'+mm+'urlimage" style="cursor:mOVe;position:absolute;top:'+y+'px;left:'+x+'px;width:100px;height:100px;">'
 	//'<img src=$("#urlimage2").val() class="'+mm+'" alt="" style="position:absolute;top:'+y+'px;left:'+x+'px;" width="50" height="50">';
 	$("body").append(imag);
-	$("."+mn+"urlimage").resizable({ghost:true}).parent().draggable();
+	$("."+mm+"urlimage").resizable({ghost:true}).parent().draggable();
 //$("."+mm).draggable();
 	x=x+50;
 	y=y+50;
-	mn=mn+1;
+	mm=mm+1;
 }
 	return;
 });
@@ -1106,7 +1078,7 @@ function  getId(url) {
 }
 var xx=100;
 	var yy=200;
-	var mp=1000;
+	var mn=1;
 
 
 $("#youtube").click(function(){
@@ -1114,24 +1086,24 @@ $("#youtube").click(function(){
 	var videourl=prompt("Enter the URL of the video","");
 	if(videourl!=null){
 	var videoid=getId(videourl);
-	var frame='<div class="'+mp+'youtube" style="position:absolute;top:'+xx+'px;left:'+yy+'px;width:420;height:315;"><iframe src="https://www.youtube.com/embed/'+videoid+'" style="width:95%;height:95%;" frameborder="0" allowfullscreen></iframe>'
+	var frame='<div class="'+mn+'youtube" style="position:absolute;top:'+xx+'px;left:'+yy+'px;width:420;height:315;"><iframe src="https://www.youtube.com/embed/'+videoid+'" style="width:95%;height:95%;" frameborder="0" allowfullscreen></iframe>'
 	$("body").append(frame);
-	$("."+mp+"youtube").draggable().resizable();
+	$("."+mn+"youtube").draggable().resizable();
 xx=xx+50;
 yy=yy+50;
-mp=mp+1;
+mn=mn+1;
 }
 });
+var mm=1;
 $("#fb-video").click(function(){
 
 	var fbvideo=prompt("Enter the embed code you have copied","");
 	if(fbvideo!=null){
-		var dim='<div class="'+mn+'fb"></div>'
+		var dim='<div class="'+mm+'fb"></div>'
 		$("body").append(dim);
-		$("."+mn+"fb").html(fbvideo+"<br><br><br>");
-	    $("."+mn+"fb").draggable();
-	    $("."+mn+"fb").css('position', 'absolute');
-	    mn=mn+1;
+		$("."+mm+"fb").html(fbvideo);
+	    $("."+mm+"fb").draggable().resizable();
+	    mm=mm+1;
 	}
 	return;
 });
@@ -1140,25 +1112,11 @@ $("#fb-video").click(function(){
 
 
 
+
+
 function myFunction(){
-    	$(".text-option-edit2").remove();
-    	$(".box-option-button").remove();
-    	$(".box-option-edit2").remove();
-document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
-
-
-		
-function modalBox(){
-	document.getElementById("modal").style.display="block";
-	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page CANNOT be edited later. Contents WILL be overwritten irrespective of earlier contents.<br><span style='color:red'>Caution</span>: Spaces between Elements may increase in final output.<br><br><span onclick='myFunction()' style=' width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
-}
-function removeBox(){
-	document.getElementById("modal").style.display="none";
-	document.getElementById("modal").innerHTML="";}
-
-function del(){
-	document.getElementById("modal").style.display="block";
-	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><a href='/del.php'; cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></a><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+	if(confirm("Are you sure to proceed? This page CANNOT be edited later. \n Caution: Spaces between Elements may increase in final output.")){document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
+	else{;}
 }
 
 
