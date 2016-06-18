@@ -220,12 +220,16 @@ $(document).on('click', function(event) {
 			var text_option_button_data=false;
 			var previous_clicked_classname="-1";
 
-$(document).on('click', 'p',function(e){
+$(document).on('click', 'p , .list',function(e){
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		var offset=$("."+previous_clicked_classname).offset();
+		var height=$("."+previous_clicked_classname).innerHeight();
+
+		//alert( +offset.top + +"40");
 		if(!text_option_button_data){
 			text_option_button_data=true;
-		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
   <button type="button" class="btn btn-primary text-option-edit " >Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown" >\
@@ -249,11 +253,13 @@ $(document).on('click', 'h2',function(e){
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
 				//alert(previous_clicked_classname);
+		var offset=$("."+previous_clicked_classname).offset();
+		var height=$("."+previous_clicked_classname).innerHeight();
 
 		if(!text_option_button_data){
 			text_option_button_data=true;
 		//	alert(text_option_button_data);
-		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
   <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle draggable" data-toggle="dropdown" >\
@@ -275,10 +281,12 @@ $(document).on('click', 'h4',function(e){
 
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		var offset=$("."+previous_clicked_classname).offset();
+		var height=$("."+previous_clicked_classname).innerHeight();
 
 		if(!text_option_button_data){
 			text_option_button_data=true;
-		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
   <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle draggable" data-toggle="dropdown" >\
@@ -319,7 +327,8 @@ $(document).on('click', '.Font-Family-Courier_New',function(){
 
 $(document).on('click', '.text-option-Font-color',function(){
 	$(".text-option-button").remove();
- 	var text='<input type="color" class="text-option-Font-color-select" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
+	var offset=$("."+previous_clicked_classname).offset();
+ 	var text='<input type="color" class="text-option-Font-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;right:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
 
  });
@@ -425,7 +434,10 @@ $(document).on('click', '.Font-Size-32px',function(){
 $(document).on('click', '.text-option-edit',function(e){
 
 	$(".text-option-button").remove();
-	var button_group='<div class="btn-group text-option-edit2" style="opacity:0.9;position:absolute;top:'+(300)+'px;right:'+(400)+'px;">\
+	var offset=$("."+previous_clicked_classname).offset();
+	var height=$("."+previous_clicked_classname).innerHeight();
+
+	var button_group='<div class="btn-group text-option-edit2" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"150") +'px;">\
 	\
 	<div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle Font-Family" data-toggle="dropdown">\
@@ -489,22 +501,6 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 
 
-/*        
-
-
-
-
-					   EVERYTHING BELOW IS NEW . ( FOR BACKEND WORK )
-
-
-
-
-
-
-*/
-
-
-
 
 
 	$('.Bullet').click(function(){
@@ -516,12 +512,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Bullet').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+'" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul>\
+			var Bullet_text='<div class="'+mm+' list" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul contenteditable="true">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
 </ul></div>';
 	$("body").append(Bullet_text);
+	$("."+mm).draggable({cancel: "ul"});
 	
 	});
 
@@ -548,12 +545,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Numbered').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+'" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="1">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="1">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
 </ol></div>';
 	$("body").append(Bullet_text);
+	$("."+mm).draggable();
 	
 	});
 
@@ -580,12 +578,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Disc').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+'" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:circle">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:circle">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
 </ul></div>';
 	$("body").append(Bullet_text);
+	$("."+mm).draggable();
 	
 	});
 
@@ -612,12 +611,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Roman').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+'" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="I">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="I">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
 </ol></div>';
 	$("body").append(Bullet_text);
+	$("."+mm).draggable();
 	
 	});
 
@@ -644,12 +644,13 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Unordered').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+'" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:none">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable="true" style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:none">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
 </ul></div>';
 	$("body").append(Bullet_text);
+	$("."+mm).draggable();
 	
 	});
 
@@ -901,9 +902,10 @@ $(".box-edit-shadow-options").remove();
 $(".box-edit-border-options").remove();
 $(".box-edit-opacity-options").remove();
 $(".box-edit-color-options").remove();
+var offset=$("."+previous_clicked_classname).offset();
 
 	$(".box-option-edit2").remove();
- 	var text='<input type="color" class="box-option-edit-color-border-select box-edit-color-options" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
+ 	var text='<input type="color" class="box-option-edit-color-border-select box-edit-color-options" style="position:absolute;top:'+ (+offset.top + +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
  	e.stopPropogation();
 
@@ -931,10 +933,11 @@ $(".box-edit-shadow-options").remove();
 $(".box-edit-border-options").remove();
 $(".box-edit-opacity-options").remove();
 $(".box-edit-color-options").remove();
+	var offset=$("."+previous_clicked_classname).offset();
 
 
 	$(".box-option-edit2").remove();
- 	var text='<input type="color" class="box-option-edit-color-fill-select box-edit-color-options" style="position:absolute;top:'+(300)+'px;right:'+(400)+'px;">';
+ 	var text='<input type="color" class="box-option-edit-color-fill-select box-edit-color-options" style="position:absolute;top:'+ (+offset.top + +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
  	e.stopPropogation();
 
@@ -961,8 +964,11 @@ $("."+previous_clicked_classname).css("background-color",colorvalue);
 
 	$(".box-option-button").remove();
 	$(".box-edit-color-options").remove();
+	var offset=$("."+previous_clicked_classname).offset();
+	var height=$("."+previous_clicked_classname).innerHeight();
 
-	var button_group='<div class="btn-group box-option-edit2 draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+
+	var button_group='<div class="btn-group box-option-edit2 draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;">\
   <button type="button" class="btn btn-primary box-option-edit-border " >Border</button>\
   <button type="button" class="btn btn-primary box-option-edit-opacity " >Opacity</button>\
   <button type="button" class="btn btn-primary box-option-edit-shadow " >Shadow</button>\
@@ -988,13 +994,15 @@ $(document).on('click', '.rectangular-box',function(e){
 
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
-
+			var offset=$("."+previous_clicked_classname).offset();
+			alert($("."+previous_clicked_classname).innerHeight());
+			var height=$("."+previous_clicked_classname).innerHeight();
 		$(".box-edit-color-options").remove();
 
 		if(!text_option_button_data){
 			text_option_button_data=true;
 
-		var button_group='<div class="btn-group box-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
+		var button_group='<div class="btn-group box-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;">\
   <button type="button" class="btn btn-primary box-option-edit " >Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle  " data-toggle="dropdown" >\
@@ -1020,7 +1028,7 @@ $.fn.extend({
     	//alert(isAdvancedOption);
         	if(isAdvancedOption)
         {	
-        				alert($("."+previous_clicked_classname).css("-webkit-animation-duration"));
+        				//alert($("."+previous_clicked_classname).css("-webkit-animation-duration"));
 
         	$("."+previous_clicked_classname).data("-webkit-animation-duration",$("."+previous_clicked_classname).css("-webkit-animation-duration")); 
 			$("."+previous_clicked_classname).data("-webkit-animation-delay",$("."+previous_clicked_classname).css("-webkit-animation-delay")); 
@@ -1030,8 +1038,9 @@ $.fn.extend({
         $(this).data=('animationName',animationName);
         $(this).addClass('animated ' + animationName).one(animationEnd, function() {
         	if($(this).hasClass('animated'))
-            $(this).removeClass('animated ' + animationName);
-
+            {$(this).removeClass('animated');}
+ 			if($(this).hasClass(animationName))
+            {$(this).removeClass(animationName);}
         $("."+previous_clicked_classname).data('animation_playing','none');
         });
     }
@@ -1044,18 +1053,28 @@ $(document).on('click', '.animate-advanced-option',function(e){
 //alert("cd");
 $(".box-option-button").remove();
 $(".text-option-button").remove();
+var offset=$("."+previous_clicked_classname).offset();
+var height=$("."+previous_clicked_classname).innerHeight();
+
+
 
 isAdvancedOption=true;
 $("."+previous_clicked_classname).animateCss($("."+previous_clicked_classname).data('animation_name'));
 
-var text1='<div style="position:absolute;top:300px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-duration">Animation-Duration : <input type="text" name="animate_advaced_duration" placeholder="Animation Duration :  '+$("."+previous_clicked_classname).data("-webkit-animation-duration")+'" class="animation-advanced-options-duration-select" style="width:150px;"></div>	';
-var text2='<div style="position:absolute;top:340px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-delay">Animation-Delay : <input type="text" name="animate_advaced_delay" placeholder="Animation Delay :  '+$("."+previous_clicked_classname).data("-webkit-animation-delay")+'" class="animation-advanced-options-delay-select" style="width:150px;"></div>	';
-var text3='<div style="position:absolute;top:380px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-iteration">Animation-Iteration-Count (type -1 for infinite) : <input type="text" name="animate_advaced_iteration" placeholder="Animation Iteration :  '+$("."+previous_clicked_classname).data("-webkit-animation-iteration-count")+'" class="animation-advanced-options-iteration-select" style="width:150px;"></div>	';
-var text4='<div style="position:absolute;top:380px;left:400px;display:inline;" class="animation-advanced-options">You have not selected any animation for this element.<br>Select an animation type for advanced options.</div>'
+var text1='<div style="position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-duration">Animation-Duration : <input type="text" name="animate_advaced_duration" placeholder="Animation Duration :  '+$("."+previous_clicked_classname).data("-webkit-animation-duration")+'" class="animation-advanced-options-duration-select" style="width:150px;"></div>	';
+var text2='<div style="position:absolute;top:'+ (+offset.top + +"60" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-delay">Animation-Delay : <input type="text" name="animate_advaced_delay" placeholder="Animation Delay :  '+$("."+previous_clicked_classname).data("-webkit-animation-delay")+'" class="animation-advanced-options-delay-select" style="width:150px;"></div>	';
+var text3='<div style="position:absolute;top:'+ (+offset.top + +"110" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-iteration">Animation-Iteration-Count (type -1 for infinite) : <input type="text" name="animate_advaced_iteration" placeholder="Animation Iteration :  '+$("."+previous_clicked_classname).data("-webkit-animation-iteration-count")+'" class="animation-advanced-options-iteration-select" style="width:150px;"></div>	';
+var text4='<div style="position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options">You have not selected any animation for this element.<br>Select an animation type for advanced options.</div>'
+var text5='<div style="position:absolute;top:'+ (+offset.top + +"160" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-once"><input type="checkbox" name="onceAnimation" value="onceAnimation" class="animation-advanced-options-once-select">Animate only first time';
+
+
 if($("."+previous_clicked_classname).hasClass('isAnnimated'))
-$("body").append(text1,text2,text3);
+$("body").append(text1,text2,text3,text5);
 else
 $("body").append(text4);
+
+if($("."+previous_clicked_classname).hasClass("animationOnlyOnce"))
+$('.animation-advanced-options-once-select').prop('checked', true);
 
 isAdvancedOption=false;
 
@@ -1075,6 +1094,28 @@ $(document).on('change', '.animation-advanced-options-duration-select',function(
 	var duration=$(".animation-advanced-options-duration-select").val();
 $("."+previous_clicked_classname).css("-webkit-animation-duration",duration+"s");
 		 	e.stopPropogation();
+
+});
+
+$(document).on('click', '.animation-advanced-options-once-select',function(e){
+	 	e.stopPropogation();
+
+});
+
+$(document).on('change', '.animation-advanced-options-once-select',function(e){
+
+	if ($('.animation-advanced-options-once-select').is(":checked"))
+	{
+  		$("."+previous_clicked_classname).addClass("animationOnlyOnce");
+  		$("."+previous_clicked_classname).data("hasAnimationHappened",false);
+
+	}
+	else
+	{
+		if($("."+previous_clicked_classname).hasClass("animationOnlyOnce"))
+			$("."+previous_clicked_classname).removeClass("animationOnlyOnce");
+
+	}
 
 });
 
@@ -1123,7 +1164,10 @@ $(document).on('click', '.animate-option',function(e){
 //alert("cd");
 $(".box-option-button").remove();
 $(".text-option-button").remove();
-var text='<div class="animation-type-options" style="position:absolute;top:300px;right:'+(400)+'px;width:300px;height:300px;">\
+var offset=$("."+previous_clicked_classname).offset();
+var height=$("."+previous_clicked_classname).innerHeight();
+
+var text='<div class="animation-type-options" style="position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;width:300px;height:300px;">\
 <div style="border:1px solid;border-top-left-radius:10px;border-top-right-radius:10px;height:20%;min-height:50px;vertical-align: middle;text-align: center;font-size:150%;font-weight:bold;">Animate</div>\
 <div style="height:80%;overflow: auto">\
 <div style="height:25%;width:100%;">\
@@ -1179,15 +1223,29 @@ $(document).on('mouseenter', '.animationType',function(e){
 
 	});
 $(document).on('mouseleave', '.animationType',function(e){
-		if($("."+previous_clicked_classname).hasClass("animated"))
+		$(this).css("background-color","#d3d3d3");
+		if($("."+previous_clicked_classname).hasClass('isAnnimated'))
+	{
+		//alert("Dfsc");
+		var name=$("."+previous_clicked_classname).data('animation_name');
+		if($(this).hasClass(name))
 		{
-			$("."+previous_clicked_classname).removeClass("animated");
-			$("."+previous_clicked_classname).removeClass($("."+previous_clicked_classname).data('animation_playing'));
-			$("."+previous_clicked_classname).data('animation_playing','none');
-
+			
+			$(this).css("background-color","#7ACEF4");
+			$(this).data=('played',false);
 
 		}
+	}
+		if($("."+previous_clicked_classname).hasClass("animated"))
+		{	//alert("Dfsc");
+			$("."+previous_clicked_classname).removeClass("animated");
+			if($("."+previous_clicked_classname).hasClass($("."+previous_clicked_classname).data('animation_playing')))
+				("."+previous_clicked_classname).removeClass($("."+previous_clicked_classname).data('animation_playing'));
+			$("."+previous_clicked_classname).data('animation_playing','none');
+			//alert("dddd");
 
+		}
+		//alert("eedd");
 	if($("."+previous_clicked_classname).hasClass('isAnnimated'))
 	{
 		//alert("Dfsc");
@@ -1202,7 +1260,7 @@ $(document).on('mouseleave', '.animationType',function(e){
 			//alert("dddd");
 		
 		else
-		{	//alert("dddd");
+		{	//alert("eedd");
 			$(this).css("background-color","#d3d3d3");}
 
 	}
@@ -1452,23 +1510,34 @@ $(window).scroll(function() {
 
 		$('.isAnnimated').each(function(){
 					//alert("vs");
+		if(($(this).hasClass('animationOnlyOnce') && !$(this).data('hasAnimationHappened')) || !$(this).hasClass('animationOnlyOnce'))	
+		{		
+		//	$("."+previous_clicked_classname).addClass("animationOnlyOnce");
+  		//$("."+previous_clicked_classname).data("hasAnimationHappened",false);
+			var imagePos = $(this).offset().top;
+									//alert(imagePos);
 
-		var imagePos = $(this).offset().top;
-								//alert(imagePos);
-
-		var topOfWindow = $(window).scrollTop();
-		//alert(topOfWindow);
-			if ((imagePos < topOfWindow+800)&&(imagePos > topOfWindow)&&(!$(this).data('played'))) {
-						//alert("vs");
-					if($(this).data('animation_name')!='none')
-				{	var name=$(this).data('animation_name')	;
-					$(this).animateCss(name);
-						$(this).data('played',true);
-						//alert("dassd");
+			var topOfWindow = $(window).scrollTop();
+			//alert(topOfWindow);
+				if ((imagePos < topOfWindow+800)&&(imagePos > topOfWindow)&&(!$(this).data('played'))) {
+							//alert("vs");	
+						if($(this).data('animation_name')!='none')
+					{	var name=$(this).data('animation_name')	;
+						$(this).animateCss(name);
+							$(this).data('played',true);
+							//alert("dassd");
+					}
 				}
+				if((imagePos > topOfWindow+800)||(imagePos < topOfWindow))
+									$(this).data('played',false);
+
+				if($(this).hasClass('animationOnlyOnce'))
+				{	
+					//alert($(this).data('hasAnimationHappened'));
+					$(this).data("hasAnimationHappened",true);	
+				}
+
 			}
-			if((imagePos > topOfWindow+800)||(imagePos < topOfWindow))
-								$(this).data('played',false);
 
 		});
 	});
