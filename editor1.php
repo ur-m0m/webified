@@ -6,24 +6,25 @@
 if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr4"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr3"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr2"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr1"])!=$_SERVER['REQUEST_URI']))echo '<meta http-equiv=refresh content="0; url=denied.html" />';}}}}
 
  ?>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="style-editor.css" type="text/css"/>
+<link rel="stylesheet" href="editor.css" type="text/css"/>
 <title> Editor for Your Site</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-<script type="text/javascript"
-    src=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-<link rel="stylesheet" type="text/css"
-    href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css"/>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="editor.js"></script>
 <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
-<script src="editor-js.js"></script>
-
+<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
+<script type="text/javascript" src="bgurl.js"></script>-->
+<link rel="stylesheet" href=" http://csshake.surge.sh/csshake.min.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 <body id="body">
 <div id="modal" style="display:none; position:fixed; left:30%; top:35%; width:40%; height:30%;z-index:10000"></div>
 <div class="container-fluid">
@@ -112,16 +113,16 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 		    		</div>
 		    		
 		    		<div class="strip-option">
-			    		<a href="#">Strip</a>
+			    	
+			    		<a href="#">Icons</a>
 			    			<div class="dropdown-content-subcontent-strip">
-			    				<a href="#">Li9nk 2</a>
-			    				<a href="#">Link 3</a>
+			    				<a href="#" class="add_fa_for_social">Add an icon</a>
 			    			</div>
 		    		</div>
 		    		<div class="box-option">
 			    		<a href="#">Box</a>
 			    			<div class="dropdown-content-subcontent-box">
-			    				<a href="#" class="Rectangular-Box">Rectangular Box</a>
+			    				<a href="#">Li8nk 2</a>
 			    				<a href="#">Link 3</a>
 			    			</div>
 		    		</div>
@@ -137,8 +138,115 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 	</div>
 
 	<div class="row footer">
-	<div class="col-lg-12 text_footer">Footer</div>
+	<div class="col-lg-12 text_footer">Footer</i></div>
 	</div>
+	<hr>
+</div>
+
+
+
+<!--Starts here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<div class="modal-input-for-bg-sizes" title="Size the background image">
+	<p>Type in x and y,for the size of background image would be x% of total width and y% of total height</p>
+	<form>
+	<fieldset>
+		<label>X%</label>
+		<input type="number" min="0" max="100" placeholder="ex: 50" class="x-input-for-bg-size" style="width:90%;">
+		<br>
+		<label>Y%</label>
+		<input type="number" min="0" max="100" placeholder="ex: 50" class="y-input-for-bg-size" style="width:90%;">	
+		<input type="submit" style="display:none">	
+	</fieldset>
+	</form>
+</div>
+
+<div class="modal-input-for-bg-pos" title="Position the background image">
+	<p>Type in x and y,for the position of background-image would be x% from left and y% from top.</p>
+	<form>
+	<fieldset>
+		<label>% from left</label>
+		<input type="number" min="0" max="100" placeholder="ex: 50" class="x-input-for-bg-pos" style="width:90%;">
+		<br>
+		<label>% from top</label>
+		<input type="number" min="0" max="100" placeholder="ex: 50" class="y-input-for-bg-pos" style="width:90%;">	
+		<input type="submit" style="display:none">	
+	</fieldset>
+	</form>
+</div>
+
+<div class="modal-input-for-bgimage" title="URL of Background image">
+	<form>
+	<label>URL</label>
+	<input type="url" class="url-input-for-bg-image" style="width:90%;">
+	<input type="submit" style="display:none">
+	</form>
+</div>
+
+<div class="modal-input-for-generalimage" title="Enter the URL of image">
+	<form>
+	<label>URL</label>
+	<input type="url" class="url-input-for-general-image" style="width:90%;">
+	<input type="submit" style="display:none;">
+	</form>
+</div>
+
+<div class="modal-input-for-youtube" title="Enter the URL of video">
+	<form>
+	<label>URL</label>
+	<input type="url" class="url-input-for-youtube" style="width:90%;">
+	<input type="submit" style="display:none;">
+	</form>
+</div>
+
+<div class="modal-input-for-fb" title="Enter the Embed code of video">
+	<form>
+	<label>Embed code</label>
+	<input type="text" class="url-input-for-fb" style="width:90%;">
+	<input type="submit" style="display:none;">
+	</form>
+</div>
+
+<div class="modal_inputs_for_hyper" title="Set image as a hyperlink">
+	<form>
+	<label>URL</label><br>
+	<input type="url" placeholder="type URL" class="url-for-hyperimage" style="width:90%;"><br><br><br><br>
+	<label>Open in</label><br>
+	<input type="radio" name="target" value="_blank" checked>New window<br>
+	<input type="radio" name="target" value="_self">Same window
+	<input type="submit" style="display:none;">
+	</form>
+</div>
+
+<div class="modal_input_for_icon" title="Add an icon">
+<form>
+<input type="radio" value="fa" class="" name="type_of_icon" checked>Font Awesome<br>
+<input type="text" class="text_for_fa" placeholder="ex:fa fa-car" style="width:90%;"><br>
+<input type="radio" value="material" class="" name="type_of_icon">Google Material Icon<br>
+<input type="text" class="text_for_mi" placeholder="ex:cloud" style="width:90%;display:none;"><br>
+<input type="submit" style="display:none;">
+</form>
+</div>
+
+<div class="modal_input_for_snc_icon" title="Size and Color of Icon">
+<p>Initial size was 30px and color was black</p>
+<form>
+<label>Size in pixels</label><br><br>
+<input type="number" min="0" style="width:90%;" placeholder="ex:30  Enter only the number" class="size_for_icon"><br><br>
+<label>Color of the icon</label><br><br>
+<input type="color" value="#000000" class="color_for_icon">
+<input type="submit" style="display:none;">
+</form>
+</div>
+
+<div class="modal_inputs_for_icon_hyper" title="Set icon as a hyperlink">
+	<form>
+	<label>URL</label><br>
+	<input type="url" placeholder="type URL" class="url-for-hypericon" style="width:90%;"><br><br>
+	<label>Open in</label><br>
+	<input type="radio" name="target_icon" value="_blank" checked>New window<br>
+	<input type="radio" name="target_icon" value="_self">Same window
+	<input type="submit" style="display:none;">
+	</form>
 </div>
 <bodypre></bodypre>
 </body>
