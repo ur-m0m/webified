@@ -204,10 +204,9 @@ color: black;
 .dropdown-content-subcontent-list{
 	display: none;
     position: absolute;
-    top:285px;
+    top:240px;
     right:-165px;
     width: 150px;
-
     background-color: #D0D0D0;
     min-width: 160px;
     margin: 0px 5px;
@@ -225,7 +224,7 @@ color: black;
 .dropdown-content-subcontent-strip{
 	display: none;
     position: absolute;
-    top:332px;
+    top:285px;
     right:-165px;
     width: 150px;
 
@@ -265,7 +264,7 @@ color: black;
 .dropdown-content-subcontent-box{
 	display: none;
     position: absolute;
-    top:350px;
+    top:330px;
     right:-165px;
     width: 150px;
 

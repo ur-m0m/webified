@@ -6,24 +6,22 @@
 if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr4"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr3"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr2"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr1"])!=$_SERVER['REQUEST_URI']))echo '<meta http-equiv=refresh content="0; url=denied.html" />';}}}}
 
  ?>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="editor.css" type="text/css"/>
+<link rel="stylesheet" href="style-editor.css" type="text/css"/>
 <title> Editor for Your Site</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="editor-js.js"></script>
 <script type="text/javascript" src="editor.js"></script>
 <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
-<!--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" media="all">
-<script type="text/javascript" src="bgurl.js"></script>-->
-<link rel="stylesheet" href=" http://csshake.surge.sh/csshake.min.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+
 
 <body id="body">
 <div id="modal" style="display:none; position:fixed; left:30%; top:35%; width:40%; height:30%;z-index:10000"></div>
@@ -54,12 +52,12 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 			<div class="col-lg-1 dropdown"style="z-index:10000;">
 				<button class="dropbtn">ADD</button>
 		    	<div class="dropdown-content">
-
-		    		<div class="background-option">
+<div class="background-option">
 			    		<a href="#">Background</a>
 			    			<div class="dropdown-content-subcontent-background">
 			    				<div style="height:0px;overflow:hidden;"><input type="color" value="#FFFFFF" id="bg"></div><a href="#" class="bgcolor">Background Color</a>
-			    				<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput1"></div><a href="#" id="bgimage">Set an image</a>
+			    				<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput1"></div><a href="#" id="bgimage"><i class="fa fa-upload"></i>Upload and set an image</a>
+			    				<a href="#" id="urlbgimage"><span class="fa fa-link"></span>Paste a URL</a>
 			    			</div>
 		    		</div>
 
@@ -75,16 +73,16 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 		    		<div class="image-option">
 			    		<a href="#">Image</a>
 			    			<div class="dropdown-content-subcontent-image">
-			    			<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput2"></div> 
-			    				<a href="#" id="imgupload">Upload an image</a>
-			    				<a href="#" id="urlimage2submit">Enter URL</a>
+			    			<div style="height:0px;overflow:hidden;"><input type="file" id="fileinput2" multiple="true"></div> 
+			    				<a href="#" id="imgupload"><i class="fa fa-upload"></i>Upload an image</a>
+			    				<a href="#" id="urlimage2submit"><span class="fa fa-link"></span>Enter URL</a>
 			    			</div>
 		    		</div>
 		    		<div class="video-option">
 			    		<a href="#">Video</a>
 			    			<div class="dropdown-content-subcontent-video">
-			    				<a href="#" id="youtube">Youtube video</a>
-			    				<a href="#" id="fb-video">Facebook video</a>
+			    				<a href="#" id="youtube"><i class="fa fa-youtube-play" style="color:red;"></i>Youtube Video</span></a>
+			    				<a href="#" id="fb-video"><i class="fa fa-facebook-f fa-2x"></i>acebook video</a>
 			    			</div>
 		    		</div>
 		    		<div class="button-option">
@@ -94,14 +92,7 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 			    				<a href="#">Link 3</a>
 			    			</div>
 		    		</div>
-		    		<div class="menu-option">
-			    		<a href="#">Menu</a>
-			    			<div class="dropdown-content-subcontent-menu">
-			    				<a class="menu-vertical" href="#">Vertical Menu</a>
-			    				<a href="#" class="hor-menu">Horizontal Menu</a>
-			    			</div>
-		    		</div>
-		    		<div class="list-option">
+			    		<div class="list-option">
 			    		<a href="#">List</a>
 			    			<div class="dropdown-content-subcontent-list">
 			    				<a href="#" class="Bullet">Bullet List</a>
@@ -111,9 +102,9 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 			    				<a href="#" class="Unordered">Unordered List</a>
 			    			</div>
 		    		</div>
-		    		
+		
+
 		    		<div class="strip-option">
-			    	
 			    		<a href="#">Icons</a>
 			    			<div class="dropdown-content-subcontent-strip">
 			    				<a href="#" class="add_fa_for_social">Add an icon</a>
@@ -122,8 +113,8 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 		    		<div class="box-option">
 			    		<a href="#">Box</a>
 			    			<div class="dropdown-content-subcontent-box">
-			    				<a href="#">Li8nk 2</a>
-			    				<a href="#">Link 3</a>
+			    				<a href="#" class="Rectangular-Box"> Rectangular Box</a>
+			    				
 			    			</div>
 		    		</div>
 
