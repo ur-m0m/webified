@@ -1,8 +1,9 @@
 <?php
-if(isset($_COOKIE[webifiedusr])){
-unlink($_COOKIE[webifiedusr]);
-setcookie("webifiedusr", "",time()-1,"/");
+for($i=5; $i>0;$i--){
+if(("/".$_COOKIE["webifiedusr".$i])==$_POST['add']){
+unlink($_COOKIE["webifiedusr".$i]);
+setcookie("webifiedusr".$i, "",time()-1,"/");
 echo "<meta http-equiv='refresh' content='0; url=/'/>";}
-else echo "<meta http-equiv='refresh' content='0; url=/denied.html'/>";
+}
 ?>
-
+<meta http-equiv='refresh' content='5; url=/denied.html'/>

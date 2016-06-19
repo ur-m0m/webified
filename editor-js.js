@@ -175,7 +175,35 @@ $(document).ready(function(){
 	}
 	});
 
+	$('.menu-vertical').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.menu-vertical').mouseenter(function(){
+		
+			var menu_cont='<div class="'+mm+'" style="cursor:move; width:150px;background-color:#8c8c8c;height:300px;font-family:verdana;overflow:auto;  position:absolute;top:'+y+'px;left:'+x+'px;font-size:110%"><a href="#" contenteditable=tRuE id="'+mm+'" style="font-size: 20px; display:block; overflow:auto;text-decoration:none;"onmouseenter=document.getElementById("'+mm+'").style.backgroundColor="#5d5d5d"onmouseexit=document.getElementById("'+mm+'").style.backgroundColor="#8c8c8c";>this is a link</a><div style="width</div>';
+	$("body").append(menu_cont);
+	$("."+mm).draggable({cancel: "a"} ).resizable();
 	
+	});
+
+	$('.menu-vertical').mouseleave(function(){
+	if($('.menu-vertical').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+
+
 
 $(document).on('click', function(event) {
   if (!$(event.target).is(".text-option-button")) {
@@ -186,6 +214,8 @@ $(document).on('click', function(event) {
     	$(".text-option-edit2").remove();
     	$(".box-option-button").remove();
     	$(".box-option-edit2").remove();
+    	$(".animation-type-options").remove();
+    	$(".animation-advanced-options").remove();
 
 
     	text_option_button_data=false	;
@@ -204,11 +234,11 @@ $(document).on('click', 'p',function(e){
 		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary text-option-edit " >Edit</button>\
   <div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate " data-toggle="dropdown" >\
+    <button type="button" class="btn btn-primary dropdown-toggle  " data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#" class="animate-option">Animation Types</a></li>\
+      <li><a href="#" class="animate-advanced-option">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
   <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
@@ -232,11 +262,11 @@ $(document).on('click', 'h2',function(e){
 		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
   <div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate draggable" data-toggle="dropdown" >\
+    <button type="button" class="btn btn-primary dropdown-toggle  " data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#" class="animate-option">Animation Types</a></li>\
+      <li><a href="#" class="animate-advanced-option">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
     <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
@@ -257,11 +287,11 @@ $(document).on('click', 'h4',function(e){
 		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary text-option-edit draggable">Edit</button>\
   <div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate draggable" data-toggle="dropdown" >\
+    <button type="button" class="btn btn-primary dropdown-toggle  " data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#" class="animate-option">Animation Types</a></li>\
+      <li><a href="#" class="animate-advanced-option">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
     <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
@@ -727,8 +757,8 @@ $(document).on('click', '.box-option-edit-border-style',function(e){
 	});
 $(document).on('change', '.box-option-edit-border-style',function(e){
 	var border_style_value=$(".box-option-edit-border-style").val();
-	alert($(".box-option-edit-border-style").val());
-	alert(previous_clicked_classname);
+	//alert($(".box-option-edit-border-style").val());
+	//alert(previous_clicked_classname);
 	switch (border_style_value) {
     case "0":
 		$("."+previous_clicked_classname).css("border-style","solid");	 
@@ -973,11 +1003,11 @@ $(document).on('click', '.rectangular-box',function(e){
 		var button_group='<div class="btn-group box-option-button draggable" style="opacity:0.9;position:absolute;top:300px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary box-option-edit " >Edit</button>\
   <div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle text-option-animate " data-toggle="dropdown" >\
+    <button type="button" class="btn btn-primary dropdown-toggle  " data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
-      <li><a href="#"></a></li>\
-      <li><a href="#"></a></li>\
+      <li><a href="#" class="animate-option">Animation Types</a></li>\
+      <li><a href="#" class="animate-advanced-option">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
   <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
@@ -988,6 +1018,466 @@ $('.box-option-button').draggable({cancel:false});
 }
 e.stopPropogation();
 
+	});
+
+var isAdvancedOption=false;
+
+$.fn.extend({
+    animateCss: function (animationName) {
+    	//alert(isAdvancedOption);
+        	if(isAdvancedOption)
+        {	
+        				//alert($("."+previous_clicked_classname).css("-webkit-animation-duration"));
+
+        	$("."+previous_clicked_classname).data("-webkit-animation-duration",$("."+previous_clicked_classname).css("-webkit-animation-duration")); 
+			$("."+previous_clicked_classname).data("-webkit-animation-delay",$("."+previous_clicked_classname).css("-webkit-animation-delay")); 
+			$("."+previous_clicked_classname).data("-webkit-animation-iteration-count",$("."+previous_clicked_classname).css("-webkit-animation-iteration-count"));
+		}
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $(this).data=('animationName',animationName);
+        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
+        	if($(this).hasClass('animated'))
+            $(this).removeClass('animated ' + animationName);
+
+        $("."+previous_clicked_classname).data('animation_playing','none');
+        });
+    }
+});
+
+
+
+
+$(document).on('click', '.animate-advanced-option',function(e){
+//alert("cd");
+$(".box-option-button").remove();
+$(".text-option-button").remove();
+
+isAdvancedOption=true;
+$("."+previous_clicked_classname).animateCss($("."+previous_clicked_classname).data('animation_name'));
+
+var text1='<div style="position:absolute;top:300px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-duration">Animation-Duration : <input type="text" name="animate_advaced_duration" placeholder="Animation Duration :  '+$("."+previous_clicked_classname).data("-webkit-animation-duration")+'" class="animation-advanced-options-duration-select" style="width:150px;"></div>	';
+var text2='<div style="position:absolute;top:340px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-delay">Animation-Delay : <input type="text" name="animate_advaced_delay" placeholder="Animation Delay :  '+$("."+previous_clicked_classname).data("-webkit-animation-delay")+'" class="animation-advanced-options-delay-select" style="width:150px;"></div>	';
+var text3='<div style="position:absolute;top:380px;left:400px;display:inline;" class="animation-advanced-options animation-advanced-options-iteration">Animation-Iteration-Count (type -1 for infinite) : <input type="text" name="animate_advaced_iteration" placeholder="Animation Iteration :  '+$("."+previous_clicked_classname).data("-webkit-animation-iteration-count")+'" class="animation-advanced-options-iteration-select" style="width:150px;"></div>	';
+var text4='<div style="position:absolute;top:380px;left:400px;display:inline;" class="animation-advanced-options">You have not selected any animation for this element.<br>Select an animation type for advanced options.</div>'
+if($("."+previous_clicked_classname).hasClass('isAnnimated'))
+$("body").append(text1,text2,text3);
+else
+$("body").append(text4);
+
+isAdvancedOption=false;
+
+//$("."+previous_clicked_classname).css("-webkit-animation-duration","3s")
+e.stopPropogation();
+
+
+});
+
+$(document).on('click', '.animation-advanced-options-duration-select',function(e){
+	 	e.stopPropogation();
+
+});
+
+$(document).on('change', '.animation-advanced-options-duration-select',function(e){
+
+	var duration=$(".animation-advanced-options-duration-select").val();
+$("."+previous_clicked_classname).css("-webkit-animation-duration",duration+"s");
+		 	e.stopPropogation();
+
+});
+
+$(document).on('click', '.animation-advanced-options-delay-select',function(e){
+	 	e.stopPropogation();
+
+});
+
+$(document).on('change', '.animation-advanced-options-delay-select',function(e){
+
+	var delay=$(".animation-advanced-options-delay-select").val();
+$("."+previous_clicked_classname).css("-webkit-animation-delay",delay+"s");
+	 	e.stopPropogation();
+
+});
+
+$(document).on('click', '.animation-advanced-options-iteration-select',function(e){
+	 	e.stopPropogation();
+
+});
+
+$(document).on('change', '.animation-advanced-options-iteration-select',function(e){
+
+	var iteration=$(".animation-advanced-options-iteration-select").val();
+	if(iteration=="-1")
+	{
+		$("."+previous_clicked_classname).css("-webkit-animation-iteration-count","infinite");
+	
+	}
+	else 
+	{
+		$("."+previous_clicked_classname).css("-webkit-animation-iteration-count",iteration);
+
+	}
+
+	e.stopPropogation();
+});
+
+
+
+
+
+
+
+$(document).on('click', '.animate-option',function(e){
+//alert("cd");
+$(".box-option-button").remove();
+$(".text-option-button").remove();
+var text='<div class="animation-type-options" style="position:absolute;top:300px;right:'+(400)+'px;width:300px;height:300px;">\
+<div style="border:1px solid;border-top-left-radius:10px;border-top-right-radius:10px;height:20%;min-height:50px;vertical-align: middle;text-align: center;font-size:150%;font-weight:bold;">Animate</div>\
+<div style="height:80%;overflow: auto">\
+<div style="height:25%;width:100%;">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType none">None</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType bounceIn">Bounce<br>In</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType fadeIn">Fade<br>In</div>\
+</div>\
+<div style="min-height:25%;width:100%;opacity:1">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType zoomIn">Zoom<br>In</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType slideInLeft">Slide<br>In Left</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType slideInRight">Slide<br>In Right</div>\
+</div>\
+<div style="height:25%;width:100%;">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType flipInX">Flip<br>In X</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType flipInY">Flip<br>In Y</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType lightSpeedIn">Light<br>Speed In</div>\
+</div>\
+<div style="height:25%;width:100%;">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType pulse">Pulse</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType shake">Shake</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType swing">Swing</div>\
+</div>\
+<div style="height:25%;width:100%;">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType rubberBand">Rubber<br>Band</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType wobble">Wobble</div>\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 10%;background-color: #d3d3d3;border-radius:10px;" class="animationType jello">Jello</div>\
+</div>\
+<div style="height:25%;width:100%;">\
+<div style="display: inline-block;border:1px solid; vertical-align: middle;text-align: center;margin: 2%;width: 27%;padding-bottom: 5%;background-color: #d3d3d3;border-radius:10px;" class="animationType rollIn">Roll<br>In</div>\
+</div>\
+</div>\
+</div>';
+$("body").append(text);
+
+if($("."+previous_clicked_classname).hasClass('isAnnimated'))
+	{
+		//alert("Dfsc");
+		var name=$("."+previous_clicked_classname).data('animation_name');
+		$("."+name).css("background-color","#7ACEF4");
+
+
+	}	
+//$("."+previous_clicked_classname).animateCss('bounce');
+//alert("cd");
+e.stopPropogation();
+
+});
+
+$(document).on('mouseenter', '.animationType',function(e){
+	$(this).css("background-color","#a3a3a3");
+	$(this).css("cursor","pointer");
+
+
+	});
+$(document).on('mouseleave', '.animationType',function(e){
+		if($("."+previous_clicked_classname).hasClass("animated"))
+		{
+			$("."+previous_clicked_classname).removeClass("animated");
+			$("."+previous_clicked_classname).removeClass($("."+previous_clicked_classname).data('animation_playing'));
+			$("."+previous_clicked_classname).data('animation_playing','none');
+
+
+		}
+
+	if($("."+previous_clicked_classname).hasClass('isAnnimated'))
+	{
+		//alert("Dfsc");
+		var name=$("."+previous_clicked_classname).data('animation_name');
+		if($(this).hasClass(name))
+		{
+			
+			$(this).css("background-color","#7ACEF4");
+			$(this).data=('played',false);
+
+		}
+			//alert("dddd");
+		
+		else
+		{	//alert("dddd");
+			$(this).css("background-color","#d3d3d3");}
+
+	}
+	else
+	{
+		//alert("dddd");
+		$(this).css("background-color","#d3d3d3");
+	}
+
+
+	});
+
+$(document).on('mouseenter', '.pulse',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','pulse');
+	$("."+previous_clicked_classname).animateCss('pulse');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.bounceIn',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','bounceIn');
+	$("."+previous_clicked_classname).animateCss('bounceIn');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.fadeIn',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','fadeIn');
+	$("."+previous_clicked_classname).animateCss('fadeIn');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.rollIn',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','rollIn');
+	$("."+previous_clicked_classname).animateCss('rollIn');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.zoomIn',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','zoomIn');
+	$("."+previous_clicked_classname).animateCss('zoomIn');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.slideInLeft',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','slideInLeft');
+	$("."+previous_clicked_classname).animateCss('slideInLeft');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.slideInRight',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','slideInRight');
+	$("."+previous_clicked_classname).animateCss('slideInRight');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.flipInX',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','flipInX');
+	$("."+previous_clicked_classname).animateCss('flipInX');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.flipInY',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','flipInY');
+	$("."+previous_clicked_classname).animateCss('flipInY');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.lightSpeedIn',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','lightSpeedIn');
+	$("."+previous_clicked_classname).animateCss('lightSpeedIn');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.shake',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','shake');
+	$("."+previous_clicked_classname).animateCss('shake');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.swing',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','swing');
+	$("."+previous_clicked_classname).animateCss('swing');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.rubberBand',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','rubberBand');
+	$("."+previous_clicked_classname).animateCss('rubberBand');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.wobble',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','wobble');
+	$("."+previous_clicked_classname).animateCss('wobble');
+	e.stopPropogation();
+
+	});
+$(document).on('mouseenter', '.jello',function(e){
+	$("."+previous_clicked_classname).data('animation_playing','jello');
+	$("."+previous_clicked_classname).animateCss('jello');
+	e.stopPropogation();
+
+	});
+
+
+
+$(document).on('click', '.pulse',function(e){
+	$("."+previous_clicked_classname).data('animation_name','pulse');
+	$("."+previous_clicked_classname).addClass('isAnnimated');
+	$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.bounceIn',function(e){
+	$("."+previous_clicked_classname).data('animation_name','bounceIn');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.fadeIn',function(e){
+	$("."+previous_clicked_classname).data('animation_name','fadeIn');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+	$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.rollIn',function(e){
+	$("."+previous_clicked_classname).data('animation_name','rollIn');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.zoomIn',function(e){
+	$("."+previous_clicked_classname).data('animation_name','zoomIn');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.slideInLeft',function(e){
+	$("."+previous_clicked_classname).data('animation_name','slideInLeft');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.slideInRight',function(e){
+	$("."+previous_clicked_classname).data('animation_name','slideInRight');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.flipInX',function(e){
+	$("."+previous_clicked_classname).data('animation_name','flipInX');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.flipInY',function(e){
+	$("."+previous_clicked_classname).data('animation_name','flipInY');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.lightSpeedIn',function(e){
+	$("."+previous_clicked_classname).data('animation_name','lightSpeedIn');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.shake',function(e){
+	$("."+previous_clicked_classname).data('animation_name','shake');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.swing',function(e){
+	$("."+previous_clicked_classname).data('animation_name','swing');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.rubberBand',function(e){
+	$("."+previous_clicked_classname).data('animation_name','rubberBand');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.wobble',function(e){
+	$("."+previous_clicked_classname).data('animation_name','wobble');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+$(document).on('click', '.jello',function(e){
+	$("."+previous_clicked_classname).data('animation_name','jello');
+		$("."+previous_clicked_classname).addClass('isAnnimated');
+		$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+	e.stopPropogation();
+
+	});
+
+
+
+$(window).scroll(function() {
+			//alert("vs");
+
+		$('.isAnnimated').each(function(){
+					//alert("vs");
+
+		var imagePos = $(this).offset().top;
+								//alert(imagePos);
+
+		var topOfWindow = $(window).scrollTop();
+		//alert(topOfWindow);
+			if ((imagePos < topOfWindow+800)&&(imagePos > topOfWindow)&&(!$(this).data('played'))) {
+						//alert("vs");
+					if($(this).data('animation_name')!='none')
+				{	var name=$(this).data('animation_name')	;
+					$(this).animateCss(name);
+						$(this).data('played',true);
+						//alert("dassd");
+				}
+			}
+			if((imagePos > topOfWindow+800)||(imagePos < topOfWindow))
+								$(this).data('played',false);
+
+		});
 	});
 
 
@@ -1144,6 +1634,7 @@ function myFunction(){
     	$(".text-option-edit2").remove();
     	$(".box-option-button").remove();
     	$(".box-option-edit2").remove();
+    	removeBox();
 document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
 
 
@@ -1157,10 +1648,69 @@ function removeBox(){
 	document.getElementById("modal").innerHTML="";}
 
 function del(){
+	
 	document.getElementById("modal").style.display="block";
-	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><a href='/del.php'; cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></a><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
 }
 
+
+function preView(){   
+	$(".text-option-edit2").remove();
+ $(".box-option-button").remove();
+ $(".box-option-edit2").remove();
+
+ document.getElementById("modal").style.display="block";
+	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'></span><br>You will now be shown the way page will appear after saving...<br><br><span onclick='view()' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+
+}
+function delFinal(){document.getElementById('hidform1').submit();}
+function view(){
+removeBox();
+  var w = window.open();
+  var wstyle= css($("#body"));
+  $(w.document.body).css(wstyle);
+  var html = $("#body").html();
+  var html1=html.substr(4249);
+    
+  var html2=html1.replace("bodypre","body");
+  var html3=html2.replace("tRuE", "false");
+  var html4=html3.replace("move;", "auto;");
+    $(w.document.body).html(html4);
+}
+
+
+
+function css(a) {
+    var sheets = document.styleSheets, o = {};
+    for (var i in sheets) {
+        var rules = sheets[i].rules || sheets[i].cssRules;
+        for (var r in rules) {
+            if (a.is(rules[r].selectorText)) {
+                o = $.extend(o, css2json(rules[r].style), css2json(a.attr('style')));
+            }
+        }
+    }
+    return o;
+}
+
+function css2json(css) {
+    var s = {};
+    if (!css) return s;
+    if (css instanceof CSSStyleDeclaration) {
+        for (var i in css) {
+            if ((css[i]).toLowerCase) {
+                s[(css[i]).toLowerCase()] = (css[css[i]]);
+            }
+        }
+    } else if (typeof css == "string") {
+        css = css.split("; ");
+        for (var i in css) {
+            var l = css[i].split(": ");
+            s[l[0].toLowerCase()] = (l[1]);
+        }
+    }
+    return s;
+}
 
 
 

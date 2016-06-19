@@ -3,8 +3,7 @@
 
 <head>
 <?php 
-
-if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=refresh content="0; url=denied.html" />';
+if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr4"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr3"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr2"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE["webifiedusr1"])!=$_SERVER['REQUEST_URI']))echo '<meta http-equiv=refresh content="0; url=denied.html" />';}}}}
 
  ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,22 +23,25 @@ if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=re
 <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
 <script src="editor-js.js"></script>
 
-
 </head>
 <body id="body">
 <div id="modal" style="display:none; position:fixed; left:30%; top:35%; width:40%; height:30%;z-index:10000"></div>
 <div class="container-fluid">
 
 	<div class="row pagebar">
-	<div class="col-lg-4 page_information" >Page</div>
+	<div class="col-lg-4 page_information" >PageEditor</div>
 	<div class="col-lg-4 tools">Tools</div>
-	<div class="col-lg-2 "><button type="button" class="btn btn-primary">Preview</button></div>
+	<div class="col-lg-2 "><button type="button" onclick="preView()" class="btn btn-primary">Preview</button></div>
 	
 <form id="hidform" method="post" action="finalpost.php">
 	<input type="hidden" name=file id=success value="">
+	<?php echo "<input type='hidden' name=add id=address value='$_SERVER[REQUEST_URI]'>"?>
 	</form>
 	<button class="btn btn-success" onclick="modalBox()">Save </button>
 	<button type="button" class="btn btn-primary" onclick="del()" style="background-color:#ff3333;">Cancel</button>
+	<form id="hidform1" method="post" action="del.php">
+	<?php echo "<input type='hidden' name=add id=address1 value='$_SERVER[REQUEST_URI]'>"?>
+	</form>
 	</div>
 	<div class="row header">
 	<div class="col-lg-12 text_header">Header</div>
@@ -48,9 +50,9 @@ if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=re
 		<div class="row">
 		
 			
-			<div class="col-lg-1 dropdown">
+			<div class="col-lg-1 dropdown"style="z-index:10000;">
 				<button class="dropbtn">ADD</button>
-		    	<div class="dropdown-content" style="z-index: 1;">
+		    	<div class="dropdown-content">
 
 		    		<div class="background-option">
 			    		<a href="#">Background</a>
@@ -94,8 +96,8 @@ if("/".$_COOKIE[webifiedusr]!=$_SERVER['REQUEST_URI']) echo '<meta http-equiv=re
 		    		<div class="menu-option">
 			    		<a href="#">Menu</a>
 			    			<div class="dropdown-content-subcontent-menu">
-			    				<a href="#">Li6nk 2</a>
-			    				<a href="#">Link 3</a>
+			    				<a class="menu-vertical" href="#">Vertical Menu</a>
+			    				<a href="#" class="hor-menu">Horizontal Menu</a>
 			    			</div>
 		    		</div>
 		    		<div class="list-option">
