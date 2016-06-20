@@ -56,6 +56,15 @@ $(document).ready(function(){
 	var x=400;var y=300;
 		var mm=0;
 
+	function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+	}
+
+
 	$('.text-large-heading').click(function(){
 		$(this).data=('clicked',true);
 		x=x+50;
@@ -727,7 +736,9 @@ $(document).on('change', '.button-option-opacity-select',function(e){
 		$(".button-opacity-options").remove();
 	$(".button-option-button").remove();
 	var offset=$("."+previous_clicked_classname).offset();
- 	var text='<input type="color" class="button-option-background-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+	var origcolor=$("."+previous_clicked_classname).find('[class*="btn"]').css("background-color");
+	origcolor=rgb2hex(origcolor);
+ 	var text='<input type="color" value="'+origcolor+'" class="button-option-background-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
  	e.preventDefault();
  	e.stopPropogation();
@@ -753,7 +764,9 @@ $(document).on('click', '.button-option-color',function(){
 		$(".button-opacity-options").remove();
 	$(".button-option-button").remove();
 	var offset=$("."+previous_clicked_classname).offset();
- 	var text='<input type="color" class="button-option-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+	var origcolor=$("."+previous_clicked_classname).find('[class*="btn"]').css("color");
+	origcolor=rgb2hex(origcolor);
+ 	var text='<input type="color" value="'+origcolor+'" class="button-option-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
  	e.preventDefault();
  	e.stopPropogation();
@@ -1230,7 +1243,7 @@ var forml3=dialogl3.find("form").on('submit',function(e){
 	link_to_box();
 });
 $(document).on('click','.link-box',function(e){
-	$('.'+previous_clicked_classname).addClass('just_clicked_for_hyper')
+	$('.'+previous_clicked_classname).children('.duplicate-box-anchor').addClass('just_clicked_for_hyper')
 	dialogl3.dialog("open");
 	e.stopPropogation();
 });
@@ -1602,6 +1615,7 @@ $(document).on('click', '.rectangular-box',function(e){
       <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
+  <button type="button" class="btn btn-primary link-box">HyperLink<span class="caret"></span></button>\
   <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
@@ -2150,7 +2164,7 @@ if(($(this).hasClass('animationOnlyOnce') && !$(this).data('hasAnimationHappened
 
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
-			var box='<div class="'+mm+' rectangular-box" contenteditable=false style=" cursor:move; position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px;"><a class="boxanchor" href="#"><div style="height:100%;width:100%;border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px"></div></a>'+
+			var box='<div class="'+mm+' rectangular-box" contenteditable=false style=" cursor:move; position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px; border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px;"><a class="boxanchor" href="#" style="display:block; height:100%;width:100%;"></a>'+
 			'<a href="#" class="duplicate-box-anchor"></a></div>';
 	$("body").append(box);
 	$("."+mm).draggable().resizable();
@@ -2197,8 +2211,12 @@ function myFunction(){
 		var length=$('.boxanchor').length,j=0;
 		while(j<length){
 			$($('.boxanchor')[j]).attr({
-				'href':$('.boxanchor').eq(j).siblings('.duplicate-anchor').attr('href'),
-				'target':$('.boxanchor').eq(j).siblings('.duplicate-anchor').attr('target')//////////////////added
+				'href':$('.boxanchor').eq(j).siblings('.duplicate-box-anchor').attr('href'),
+				'target':$('.boxanchor').eq(j).siblings('.duplicate-box-anchor').attr('target')//////////////////added
+			});
+			$('.boxanchor').eq(j).css({
+				'height':$(".boxanchor").eq(j).parent().css("height"),
+				'width':$(".boxanchor").eq(j).parent().css("width")
 			});
 			j++;
 		}
@@ -2233,9 +2251,9 @@ function del(){
 
 function preView(){ 
   
-	$(".text-option-edit2").remove();
- $(".box-option-button").remove();
- $(".box-option-edit2").remove();
+//$(".text-option-edit2").remove();
+//$(".box-option-button").remove();
+//$(".box-option-edit2").remove();
 
  document.getElementById("modal").style.display="block";
 	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'></span><br>You will now be shown the way page will appear after saving...<br><br><span onclick='view()' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";

@@ -18,13 +18,16 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 <script type="text/javascript" src="editor-js.js"></script>
 <script type="text/javascript" src="editor.js"></script>
 <link rel="stylesheet" href="animate.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 </head>
 
 
 <body id="body">
-<div id="modal" style="display:none; position:fixed; left:30%; top:35%; width:40%; height:30%;z-index:10000"></div>
+<div id="modal" style="display:none; position:fixed; overflow:auto; left:30%; top:5%; width:40%; height:90%;z-index:10000"></div>
 <div class="container-fluid">
 
 	<div class="row pagebar">
@@ -90,8 +93,12 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 		    		<div class="button-option">
 			    		<a href="#">Buttons</a>
 			    			<div class="dropdown-content-subcontent-button">
-			    				<a href="#">Liiiiiink 2</a>
-			    				<a href="#">Link 3</a>
+			    				<a href="#" class="Default">Default</a>
+			    				<a href="#" class="Primary">Primary</a>
+			    				<a href="#" class="Success">Success</a>
+			    				<a href="#" class="Info">Info</a>
+			    				<a href="#" class="Warning">Warning</a>
+			    				<a href="#" class="Danger">Danger</a>
 			    			</div>
 		    		</div>
 			    		<div class="list-option">
@@ -135,7 +142,6 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 	</div>
 	<hr>
 </div>
-
 
 
 <!--Starts here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -199,7 +205,7 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 	</form>
 </div>
 
-<div class="modal_inputs_for_hyper" title="Set image as a hyperlink">
+<div class="modal_inputs_for_hyper" title="Set a hyperlink">
 	<form>
 	<label>URL</label><br>
 	<input type="url" placeholder="type URL" class="url-for-hyperimage" style="width:90%;"><br><br><br><br>
@@ -212,9 +218,9 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 
 <div class="modal_input_for_icon" title="Add an icon">
 <form>
-<input type="radio" value="fa" class="" name="type_of_icon" checked>Font Awesome<br>
+<input type="radio" value="fa" class="" name="type_of_icon" checked><a href="http://fontawesome.io/icons/" target="_blank">Font Awesome</a><br>
 <input type="text" class="text_for_fa" placeholder="ex:fa fa-car" style="width:90%;"><br>
-<input type="radio" value="material" class="" name="type_of_icon">Google Material Icon<br>
+<input type="radio" value="material" class="" name="type_of_icon"><a href="https://design.google.com/icons/" target="_blank">Google Material Icon</a><br>
 <input type="text" class="text_for_mi" placeholder="ex:cloud" style="width:90%;display:none;"><br>
 <input type="submit" style="display:none;">
 </form>
@@ -231,13 +237,23 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 </form>
 </div>
 
-<div class="modal_inputs_for_icon_hyper" title="Set icon as a hyperlink">
+<div class="modal_inputs_for_hypertext" title="Set text as a hyperlink">
 	<form>
 	<label>URL</label><br>
-	<input type="url" placeholder="type URL" class="url-for-hypericon" style="width:90%;"><br><br>
+	<input type="url" placeholder="type URL" class="url-for-hypertext" style="width:90%;"><br><br>
 	<label>Open in</label><br>
-	<input type="radio" name="target_icon" value="_blank" checked>New window<br>
-	<input type="radio" name="target_icon" value="_self">Same window
+	<input type="radio" name="target_text" value="_blank" checked>New window<br>
+	<input type="radio" name="target_text" value="_self">Same window
+	<input type="submit" style="display:none;">
+	</form>
+</div>
+<div class="modal_inputs_for_box_hyper" title="Set box as a hyperlink">
+	<form>
+	<label>URL</label><br>
+	<input type="url" placeholder="type URL" class="url-for-box-hyper" style="width:90%;"><br><br>
+	<label>Open in</label><br>
+	<input type="radio" name="target_box" value="_blank" checked>New window<br>
+	<input type="radio" name="target_box" value="_self">Same window
 	<input type="submit" style="display:none;">
 	</form>
 </div>

@@ -304,7 +304,7 @@ function addurlbgimage(){
 	   		 });
 		function imageisloaded(e){
 	    				var imag='<div class="imagediv" style="cursor:move;width:200px;height:200px;position:absolute;top:'+x+'px;left:'+y+'px">'+	
-	    				'<a href="#" class="imageanchor"><img src="'+e.target.result+'" class="image" alt="sorry!image not found" style="width:100%;height:100%;opacity:1;"></a>'+	
+	    				'<a href="#" class="imageanchor" style="cursor:move;"><img src="'+e.target.result+'" class="image" alt="sorry!image not found" style="width:100%;height:100%;opacity:1;"></a>'+	
 	    				'<a class="duplicate-anchor" href="#"></a>'+
 	   					'<div class="btn-group editimage" style="display:none;">'+
 	    				'<button class="btn btn-primary opacity-image">Change Opacity<span class="caret"></span></button>'+
@@ -366,7 +366,7 @@ function addurlbgimage(){
 			addurlgeneralimage();
 		});
 		function addurlgeneralimage(){
-			var imag='<div class="imagediv" style="cursor:move;position:absolute;top:'+y+'px;left:'+x+'px;width:100px;height:100px;"><a href="#" style="cursor:move;" class="imageanchor"><img class="image" alt="Sorry!Image not found" src="'+$(".-input-for-general-image").val()+'" style="width:100%;height:100%;"></a>'+
+			var imag='<div class="imagediv" style="cursor:move;position:absolute;top:'+y+'px;left:'+x+'px;width:100px;height:100px;"><a href="#" style="cursor:move;" class="imageanchor"><img class="image" alt="Sorry!Image not found" src="'+$(".url-input-for-general-image").val()+'" style="width:100%;height:100%;"></a>'+
 			'<a class="duplicate-anchor" href="#" style="cursor:move;"></a>'+
 			'<div class="btn-group editimage" style="display:none;">'+
 			'<button class="btn btn-primary opacity-image">Change Opacity<span class="caret"></span></button>'+
@@ -670,7 +670,7 @@ $("#youtube").click(function(){
 
 function addurlyoutube(){	
 		var videoid=getId($(".url-input-for-youtube").val());
-		var frame='<div class="youtubeviddiv" style="position:absolute;top:'+xx+'px;left:'+yy+'px;width:420;height:315;">'+
+		var frame='<div class="youtubeviddiv" style=" border: .5px solid bLuE;position:absolute;top:'+xx+'px;left:'+yy+'px;width:420;height:315;">'+
 		'<iframe class="youtubevid" src="https://www.youtube.com/embed/'+videoid+'" style="width:90%;height:90%;" frameborder="0" allowfullscreen></iframe>'+
 		'<div class="btn-group animated rollIn edityoutubevid" style="display:none;">'+
 		'<button class="btn btn-primary delete-youtubevid"><i class="fa fa-trash-o"></i>  Delete Video</button>'+
@@ -762,7 +762,7 @@ var form5=dialog5.find("form").on('submit',function(e){
 	addfbvideo();
 });
 function addfbvideo(){
-		var dim='<div class="'+fb_num+'fb fbviddiv"></div>';
+		var dim='<div class="'+fb_num+'fb fbviddiv" style="border:.5px solid bLuE"></div>';
 		$("body").append(dim);
 		$("."+fb_num+"fb").html($(".url-input-for-fb").val()+'<br><br><div class="btn-group editfbvid" style="display:none;">'+
 			//'<button class="btn btn-primary change-fbvid">Change Video</button>'+
@@ -843,7 +843,7 @@ $("input[name='type_of_icon'][value='material']").click(function(){
 function addicon(){
 	
 	if($("input[name='type_of_icon']:checked").val()=="fa" && $(".text_for_fa").val()!=""){
-		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor"><i class="iconic '+$(".text_for_fa").val()+'" style="font-size:30px;color:black;"></i></a>'+
+		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" style="cursor:move;" class="iconanchor"><i class="iconic '+$(".text_for_fa").val()+'" style="font-size:30px;color:black;"></i></a>'+
 	'<a class="duplicate-icon-anchor" href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+	
@@ -853,7 +853,7 @@ function addicon(){
 	'<li><a href="#" class="animate_type">Animation Types</a></li>'+
 	'<li><a href="#" class="advance_animate">Advanced Animation Options</a></li>'+	
 	'</ul></div>'+
-	'<button class="btn btn-primary link-icon">Hyperlink<span class="caret"></span></button>'+
+	'<button class="btn btn-primary link-image">Hyperlink<span class="caret"></span></button>'+
 	'<button class="btn btn-primary delete-icon"><i class="fa fa-trash-o"></i>  Delete Icon</button>'+
 	'</div>'+
 	'</div>';
@@ -865,8 +865,8 @@ function addicon(){
 	}
 
 	if($("input[name='type_of_icon']:checked").val()=="material" && $(".text_for_mi").val()!=""){
-		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor"><i class="iconic material-icons" style="color:black;font-size:30px;">'+$(".text_for_mi").val()+'</i></a>'+
-	'<a class="duplicate-icon-anchor" href="#"></a>'+
+		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor" style="cursor:move;"><i class="iconic material-icons" style="color:black;font-size:30px;">'+$(".text_for_mi").val()+'</i></a>'+
+	'<a class="duplicate-icon-anchor"  href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+
 	'<div class="dropdown animate-drop">'+
@@ -875,7 +875,7 @@ function addicon(){
 	'<li><a href="#" class="animate_type">Animation Types</a></li>'+
 	'<li><a href="#" class="advance_animate">Advanced Animation Options</a></li>'+	
 	'</ul></div>'+
-	'<button class="btn btn-primary link-icon">Hyperlink<span class="caret"></span></button>'+
+	'<button class="btn btn-primary link-image">Hyperlink<span class="caret"></span></button>'+
 	'<button class="btn btn-primary delete-icon"><i class="fa fa-trash-o"></i>  Delete Icon</button>'+
 	'</div>'+
 	'</div>';
@@ -952,51 +952,6 @@ function sncicon(){
 	dialogsnc.dialog("close");
 }
 
-var dialogl3=$(".modal_inputs_for_icon_hyper").dialog({
-	autoOpen:false,
-	show:{
-		effect:"blind",
-		duration:1000
-	},
-	hide:{
-		effect:'explode',
-		duration:1000
-	},
-	width:350,
-	height:350,
-	modal:true,
-	buttons:{
-		//"OK":function(e){
-			//e.preventDefault();
-			//link_to_urlimage();
-		//}
-		Cancel:function(){
-			dialogl3.dialog("close");
-		}
-	},
-	close:function(){
-		forml3[0].reset();
-		$('.duplicate-icon-anchor').removeClass('just_clicked_for_hyperic');
-	}
-});
-var forml3=dialogl3.find("form").on('submit',function(e){
-	e.preventDefault();
-	link_to_icon();
-});
-$(document).on('click','.link-icon',function(e){
-	$(this).parent().siblings('.duplicate-icon-anchor').addClass('just_clicked_for_hyperic');
-	dialogl3.dialog("open");
-	e.stopPropogation();
-});
-function link_to_icon(){
-	if($('.url-for-hypericon').val()!=""){
-		$('.just_clicked_for_hyperic').attr('href',$('.url-for-hypericon').val());
-	}
-	$('.just_clicked_for_hyperic').attr('target',$('input[name="target_icon"]:checked').val());
-	$('.duplicate-icon-anchor').removeClass('just_clicked_for_hyperic');
-	dialogl3.dialog("close");
-}
-
 /*$(".click_here_for_link").click(function(){
 	var len=$('.imageanchor').length,i=0;		
 		while(i<len){
@@ -1048,6 +1003,7 @@ $.fn.extend({
 
 $(document).on('click', '.advance_animate',function(e){
 //alert("cd");
+$(".button-option-button").remove();
 $(".box-option-button").remove();
 $(".text-option-button").remove();
 $(".editicon").fadeOut();
@@ -1058,13 +1014,11 @@ var height=$(".just_clicked_animate").innerHeight();
 isAdvancedOption=true;
 $(".just_clicked_animate").animateCss($(".just_clicked_animate").data('animation_name'));
 
-var text1='<div style="position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-duration">Animation-Duration : <input type="text" name="animate_advaced_duration" placeholder="Animation Duration :  '+$(".just_clicked_animate").data("-webkit-animation-duration")+'" class="animation-advanced-options-duration-select" style="width:150px;"></div>	';
-var text2='<div style="position:absolute;top:'+ (+offset.top + +"60" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-delay">Animation-Delay : <input type="text" name="animate_advaced_delay" placeholder="Animation Delay :  '+$(".just_clicked_animate").data("-webkit-animation-delay")+'" class="animation-advanced-options-delay-select" style="width:150px;"></div>	';
-var text3='<div style="position:absolute;top:'+ (+offset.top + +"110" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-iteration">Animation-Iteration-Count (type -1 for infinite) : <input type="text" name="animate_advaced_iteration" placeholder="Animation Iteration :  '+$(".just_clicked_animate").data("-webkit-animation-iteration-count")+'" class="animation-advanced-options-iteration-select" style="width:150px;"></div>	';
-var text4='<div style="position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options">You have not selected any animation for this element.<br>Select an animation type for advanced options.</div>'
-var text5='<div style="position:absolute;top:'+ (+offset.top + +"160" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-once"><input type="checkbox" name="onceAnimation" value="onceAnimation" class="animation-advanced-options-once-select">Animate only first time';
-
-
+var text1='<div style=" padding:.22%; background-color:#666666;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-duration">Animation-Duration : <input type="text" name="animate_advaced_duration" placeholder="Animation Duration :  '+$(".just_clicked_animate").data("-webkit-animation-duration")+'" class="animation-advanced-options-duration-select" style="width:150px;"></div>	';
+var text2='<div style=" padding:.25%;background-color:#666666;position:absolute;top:'+ (+offset.top + +"60" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-delay">Animation-Delay : <input type="text" name="animate_advaced_delay" placeholder="Animation Delay :  '+$(".just_clicked_animate").data("-webkit-animation-delay")+'" class="animation-advanced-options-delay-select" style="width:150px;"></div>	';
+var text3='<div style=" padding:.25%;background-color:#666666;position:absolute;top:'+ (+offset.top + +"110" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-iteration">Animation-Iteration-Count (type -1 for infinite) : <input type="text" name="animate_advaced_iteration" placeholder="Animation Iteration :  '+$(".just_clicked_animate").data("-webkit-animation-iteration-count")+'" class="animation-advanced-options-iteration-select" style="width:150px;"></div>	';
+var text4='<div style=" padding:.25%;background-color:#666666;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options">You have not selected any animation for this element.<br>Select an animation type for advanced options.</div>'
+var text5='<div style=" padding:.25%;background-color:#666666;position:absolute;top:'+ (+offset.top + +"160" + +height) +'px;left:'+ (+offset.left - +"100") +'px;display:inline;" class="animation-advanced-options animation-advanced-options-once"><input type="checkbox" name="onceAnimation" value="onceAnimation" class="animation-advanced-options-once-select">Animate only first time';
 if($(".just_clicked_animate").hasClass('isAnnimated'))
 $("body").append(text1,text2,text3,text5);
 else
@@ -1158,6 +1112,7 @@ $(document).on('change', '.animation-advanced-options-iteration-select',function
 
 $(document).on('click', '.animate_type',function(e){
 //alert("cd");
+$(".button-option-button").remove();
 $(".box-option-button").remove();
 $(".text-option-button").remove();
 $(".editicon").fadeOut();
@@ -1561,6 +1516,7 @@ $(window).scroll(function() {
 });
 
 function info(){
-	alert("info");
-document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
-}
+	document.getElementById("modal").style.display="block";
+	document.getElementById("modal").innerHTML="<p style:'width:500px;' class='modal-content'><span class='modal-title'>Webified<span onclick='removeBox()' style='display: inline-block;color:#333333;width:50px; font-size:25px position: absolute;left:280px;' class='glyphicon glyphicon-remove'></span></span><br><b>Hi! This is a quick tutorial and tips to make better use of our Website</b><br><br><br>This blankspace provided to you is your workspace and you can add anything from the 'ADD' button. <br> Note that the blue outline will not be present in the final result. That is just to show boundaries of elements.<br><b>Background</b><br> You can change background color or image. Image can be set by uploading one or by pasting a url. We usually don't provide OK button for dialog boxes for urls but pressing 'Enter' would do the job. Background images can be further edited by clicking anywhere on the image for the options. <br><b>Text</b><br>In Text, we have provided four options: Large and small headings, large and small paragragh. Their font-size can however be changed in options which can simply be accessed by clicking on the text. Animate option has two further options: Animation Type, Animation Advanced Options; the latter being only accessible after selecting a type in the Animation Type. Clicking in the text field enables editing. Clicking and dragging the text element marked by border enabled dragging. Resizing is also available by dragging the right bottom corner. On clicking edit in the options, you will be shown further more options: font-family, font-size, color, bold, italics. For these to work text must be selected. This rule applies for even Hyperlink.<br> <b>Image </b> <br> Images can be added similar to background image. Multiple images can be added but image with the same name cannot be added consecutively. The editing options here are Opacity, Shape, Animation and Hyperlink. Editing shape option gives shape to the edges of image. <br><b>Video</b><br> Facebook and YouTube videos can be added here. They are resizable and can be dragged around. We allow fullscreen by default. <br><b>Buttons</b><br> These are text boxes associated with links. these can be joined together to make a navigation bar, for instance. the content and the link is editable. <br><b> Lists</b> <br> We have few types of list which are editable and can be positioned anywhere. Each entry just equires a press of 'Enter'.<br><b>Icons</b><br>This is to add different variety of icons in 'Font Awesome' and 'Google Material Icons'. The library of icons can be accessed through the links in the dialog box itself. When entry for google material is more than a word, please put underscore (_) between the words.<br><b> Box</b> <br> This adds a rectangular box with black border. This is resizable and draggable. The edit options have shadow, border, opacity and color. Shadow in right and bottom directions can be set and with blur. Border type can be changed and border radii can be changed. A rectangular box can be made into an elliptical box purely by giving appropriately large radii values. Finally,  box can be given border color or fill-in color or both.     <br></p></div>";
+
+	}
