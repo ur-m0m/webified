@@ -65,7 +65,7 @@ $(document).ready(function(){
 
 	$('.text-large-heading').mouseenter(function(){
 		
-			var text_large_heading_text='<div class="'+mm+'" style="font-family:verdana;font-size:17px; font-weight:normal; position:absolute;top:'+y+'px;left:'+x+'px;"><h2 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_large_heading_text='<div class="'+mm+'" style="font-family:verdana;border:.5px solid bLuE;font-size:17px; font-weight:normal; position:absolute;top:'+y+'px;left:'+x+'px;"><h2 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
   This is a heading</h2></div>';
 	$("body").append(text_large_heading_text);
 		$("."+mm).draggable({cancel: "h2"} ).resizable();
@@ -94,7 +94,7 @@ $(document).ready(function(){
 
 	$('.text-small-heading').mouseenter(function(){
 		
-			var text_small_heading_text='<div class="'+mm+' draggable"  style="font-family:verdana; font-weight: normal; font-size: 15px; position:absolute;top:'+y+'px;left:'+x+'px;"><h4 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_small_heading_text='<div class="'+mm+' draggable"  style="font-family:verdana;border:.5px solid bLuE; font-weight: normal; font-size: 15px; position:absolute;top:'+y+'px;left:'+x+'px;"><h4 contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
   This is a heading</h4></div>';
 	$("body").append(text_small_heading_text);
 		$("."+mm).draggable({cancel: "h4"} ).resizable();
@@ -124,7 +124,7 @@ $(document).ready(function(){
 
 	$('.text-large-paragraph').mouseenter(function(){
 		
-			var text_large_paragraph_text='<div class="'+mm+'" style="font-size: 13px; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:110%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_large_paragraph_text='<div class="'+mm+'" style="font-size: 13px;border:.5px solid bLuE; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:110%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
   This is a paragraph</p></div>';
 	$("body").append(text_large_paragraph_text);
 	$("."+mm).draggable({cancel: "p"} ).resizable();
@@ -154,7 +154,7 @@ $(document).ready(function(){
 
 	$('.text-small-paragraph').mouseenter(function(){
 		
-			var text_small_paragraph_text='<div class="'+mm+'" style="font-size: 10px; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:80%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
+			var text_small_paragraph_text='<div class="'+mm+'" style="font-size: 10px;border:.5px solid bLuE; font-family:verdana; position:absolute;top:'+y+'px;left:'+x+'px;font-size:80%"><p contenteditable=tRuE style="display:block; height:90%; width:95%;font-weight: normal;">\
   This is a paragraph</p></div>';
 	$("body").append(text_small_paragraph_text);
 		$("."+mm).draggable({cancel: "p"}).resizable();
@@ -210,6 +210,7 @@ $(document).on('click', function(e) {
 
   previous_clicked_classname="-1";
     if(text_option_button_data){
+    	$(".button-option-button").remove();
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
     	$(".box-option-button").remove();
@@ -230,13 +231,28 @@ $(document).on('click', 'p, .list',function(e){
 		$(".just_clicked_animate").removeClass("just_clicked_animate");
 		$(this).addClass("just_clicked_animate");
 
+		var previous_previous_clicked_classname=previous_clicked_classname;
+
+
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+
+		if(previous_previous_clicked_classname!="-1"&&previous_previous_clicked_classname!=previous_clicked_classname)
+		{
+			text_option_button_data=false;
+	    	$(".button-option-button").remove();
+	    	$(".text-option-button").remove();
+	    	$(".text-option-edit2").remove();
+	    	$(".box-option-button").remove();
+	    	$(".box-option-edit2").remove();
+
+		}
+
 		var offset=$("."+previous_clicked_classname).offset();
 		var height=$("."+previous_clicked_classname).innerHeight();
 		if(!text_option_button_data){
 			text_option_button_data=true;
-		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;right:'+(400)+'px;">\
+		var button_group='<div class="btn-group text-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left + +"50") +'px;right:'+(400)+'px;">\
   <button type="button" class="btn btn-primary text-option-edit " >Edit</button>\
   <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle animatebutton " data-toggle="dropdown" >\
@@ -246,6 +262,7 @@ $(document).on('click', 'p, .list',function(e){
       <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
+   <button type="button" class="btn btn-primary link-text">Hypertext<span class="caret"></span></button>\
   <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
@@ -258,9 +275,20 @@ $('.text-option-button').draggable({cancel:false});
 $(document).on('click', 'h2',function(e){
 		$(".just_clicked_animate").removeClass("just_clicked_animate");
 		$(this).addClass("just_clicked_animate");
+		var previous_previous_clicked_classname=previous_clicked_classname;
 
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		if(previous_previous_clicked_classname!="-1"&&previous_previous_clicked_classname!=previous_clicked_classname)
+		{
+			text_option_button_data=false;
+	    	$(".button-option-button").remove();
+	    	$(".text-option-button").remove();
+	    	$(".text-option-edit2").remove();
+	    	$(".box-option-button").remove();
+	    	$(".box-option-edit2").remove();
+	    	
+		}
 				//alert(previous_clicked_classname);
 		var offset=$("."+previous_clicked_classname).offset();
 		var height=$("."+previous_clicked_classname).innerHeight();
@@ -277,6 +305,7 @@ $(document).on('click', 'h2',function(e){
       <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
+   <button type="button" class="btn btn-primary link-text">Hypertext<span class="caret"></span></button>\
     <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
@@ -288,9 +317,20 @@ $('.text-option-button').draggable({cancel:false});
 $(document).on('click', 'h4',function(e){
 	$(".just_clicked_animate").removeClass("just_clicked_animate");
 	$(this).addClass("just_clicked_animate");
+	var previous_previous_clicked_classname=previous_clicked_classname;
 	
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		if(previous_previous_clicked_classname!="-1"&&previous_previous_clicked_classname!=previous_clicked_classname)
+		{
+			text_option_button_data=false;
+	    	$(".button-option-button").remove();
+	    	$(".text-option-button").remove();
+	    	$(".text-option-edit2").remove();
+	    	$(".box-option-button").remove();
+	    	$(".box-option-edit2").remove();
+	    	
+		}
 		var offset=$("."+previous_clicked_classname).offset();
 		var height=$("."+previous_clicked_classname).innerHeight();
 		if(!text_option_button_data){
@@ -305,6 +345,7 @@ $(document).on('click', 'h4',function(e){
       <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
+   <button type="button" class="btn btn-primary link-text">Hypertext<span class="caret"></span></button>\
     <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
 </div>';
 $("body").append(button_group);
@@ -320,6 +361,136 @@ $(document).on('click', '.delete-option',function(e){
 $('.'+previous_clicked_classname).remove();
 
 });
+
+
+function saveSelection() {
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            var ranges = [];
+            for (var i = 0, len = sel.rangeCount; i < len; ++i) {
+                ranges.push(sel.getRangeAt(i));
+            }
+            return ranges;
+        }
+    } else if (document.selection && document.selection.createRange) {
+        return document.selection.createRange();
+    }
+    return null;
+}
+function restoreSelection(savedSel) {
+    if (savedSel) {
+        if (window.getSelection) {
+            sel = window.getSelection();
+            sel.removeAllRanges();
+            for (var i = 0, len = savedSel.length; i < len; ++i) {
+                sel.addRange(savedSel[i]);
+            }
+        } else if (document.selection && savedSel.select) {
+            savedSel.select();
+        }
+    }
+}
+
+    function getLinksInSelection() {
+        var selectedLinks = [];
+        var range, containerEl, links, linkRange;
+        if (window.getSelection) {
+            
+            if (sel.getRangeAt && sel.rangeCount) {
+                linkRange = document.createRange();
+                for (var r = 0; r < sel.rangeCount; ++r) {
+                    range = sel.getRangeAt(r);
+                    containerEl = range.commonAncestorContainer;
+                    if (containerEl.nodeType != 1) {
+                        containerEl = containerEl.parentNode;
+                    }
+                    if (containerEl.nodeName.toLowerCase() == "a") {
+                        selectedLinks.push(containerEl);
+                    } else {
+                        links = containerEl.getElementsByTagName("a");
+                        for (var i = 0; i < links.length; ++i) {
+                            linkRange.selectNodeContents(links[i]);
+                            if (linkRange.compareBoundaryPoints(range.END_TO_START, range) < 1 && linkRange.compareBoundaryPoints(range.START_TO_END, range) > -1) {
+                                selectedLinks.push(links[i]);
+                            }
+                        }
+                    }
+                }
+                linkRange.detach();
+            }
+        } else if (document.selection && document.selection.type != "Control") {
+            range = document.selection.createRange();
+            containerEl = range.parentElement();
+            if (containerEl.nodeName.toLowerCase() == "a") {
+                selectedLinks.push(containerEl);
+            } else {
+                links = containerEl.getElementsByTagName("a");
+                linkRange = document.body.createTextRange();
+                for (var i = 0; i < links.length; ++i) {
+                    linkRange.moveToElementText(links[i]);
+                    if (linkRange.compareEndPoints("StartToEnd", range) > -1 && linkRange.compareEndPoints("EndToStart", range) < 1) {
+                        selectedLinks.push(links[i]);
+                    } 
+                }
+            }
+        }
+        return selectedLinks;
+    }
+dialoglite=$(".modal_inputs_for_hypertext").dialog({
+	autoOpen:false,
+	show:{
+		effect:"blind",
+		duration:1000
+	},
+	hide:{
+		effect:'explode',
+		duration:1000
+	},
+	width:350,
+	height:350,
+	modal:true,
+	buttons:{
+		Cancel:function(){
+			dialoglite.dialog("close");
+		}		
+	},	
+	close:function(){
+		formlite[0].reset();
+	}
+});
+var formlite=dialoglite.find("form").on('submit',function(e){
+	e.preventDefault();
+	link_to_text();
+});
+var savedSel,selection,class_for_a_in_hypertext="aa";
+$(document).on('click','.link-text',function(e){
+	savedSel=saveSelection();
+	selection=document.getSelection();
+	sel = window.getSelection();
+	document.execCommand("CreateLink", false,"#");
+	selection.anchorNode.parentElement.className=class_for_a_in_hypertext;
+	dialoglite.dialog("open");
+});
+function link_to_text(){
+	var url =$(".url-for-hypertext").val();
+    restoreSelection(savedSel); 
+    var target_for_text=$('input[name="target_text"]:checked').val();
+    $('.'+class_for_a_in_hypertext).attr({
+     'href':function(){
+     	var hash="#";
+     	if(url!=""){return url;}
+     	else {return hash;} 
+     },
+   	 'target':target_for_text
+    });
+    class_for_a_in_hypertext+="a";
+    var links = getLinksInSelection();
+    for (var i = 0; i < links.length; ++i) {
+        links[i].style.fontWeight = "bold";
+    }
+    dialoglite.dialog("close");
+}
 
 $(document).on('click', '.Font-Family-Times_New_Roman',function(e){
 	document.execCommand('fontName',false,"Times New Roman");
@@ -478,7 +649,7 @@ $(document).on('click', '.text-option-edit',function(e){
   </div>\
 \
   	<div class="btn-group">\
-    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">\
+    <button type="button" class="btn btn-primary dropdown-toggle Font_Size" data-toggle="dropdown">\
     Font-Size <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
       <li><a href="#" class="Font-Size-10px" style="font-size: 10px;">10 px</a></li>\
@@ -526,6 +697,348 @@ $(document).on('click',".text-option-edit-italics",function(){
 	document.execCommand('italic',false,null);});
 
 
+
+
+$(document).on('click', '.button-option-opacity',function(e){
+
+	$(".button-opacity-options").remove();
+
+var text='<input type="text" name="button_opacity" placeholder="Opacity :  '+$("."+previous_clicked_classname).find('[class*="btn"]').css("opacity")+'" class="button-option-opacity-select button-opacity-options" style="position:absolute;top:50px;width:100px;right:130px">	';
+
+$(".button-option-button").append(text);
+e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-opacity-select',function(e){
+	 	e.stopPropogation();
+
+	});
+$(document).on('change', '.button-option-opacity-select',function(e){
+	var changed_opacity=$(".button-option-opacity-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("opacity",changed_opacity);	
+	 	e.stopPropogation();
+
+	});
+
+
+
+
+	$(document).on('click', '.button-option-background-color',function(){
+		$(".button-opacity-options").remove();
+	$(".button-option-button").remove();
+	var offset=$("."+previous_clicked_classname).offset();
+ 	var text='<input type="color" class="button-option-background-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+ 	$("body").append(text);
+ 	e.preventDefault();
+ 	e.stopPropogation();
+
+ });
+$(document).on('change', '.button-option-background-color-select',function(){
+		text_option_button_data=false;
+	var colorvalue=$(".button-option-background-color-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("background-color",colorvalue);
+	$(".button-option-background-color-select").remove();
+	e.preventDefault();
+ 	e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-background-color-select',function(e){
+	//e.preventDefault();
+ 	e.stopPropogation();
+
+});
+
+
+$(document).on('click', '.button-option-color',function(){
+		$(".button-opacity-options").remove();
+	$(".button-option-button").remove();
+	var offset=$("."+previous_clicked_classname).offset();
+ 	var text='<input type="color" class="button-option-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+ 	$("body").append(text);
+ 	e.preventDefault();
+ 	e.stopPropogation();
+
+ });
+$(document).on('change', '.button-option-color-select',function(){
+		text_option_button_data=false;
+	var colorvalue=$(".button-option-color-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("color",colorvalue);
+	$(".button-option-color-select").remove();
+	e.preventDefault();
+ 	e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-color-select',function(e){
+	//e.preventDefault();
+ 	e.stopPropogation();
+
+});
+
+
+
+
+$(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoButton , .PrimaryButton , .DefaultButton",function(){
+	
+	$(".just_clicked_animate").removeClass("just_clicked_animate");
+		$(this).addClass("just_clicked_animate");
+		var previous_previous_clicked_classname=previous_clicked_classname;
+		
+	var forclass=($(this).closest('div').parent().parent().attr("class"));
+		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		if(previous_previous_clicked_classname!="-1"&&previous_previous_clicked_classname!=previous_clicked_classname)
+		{
+			text_option_button_data=false;
+	    	$(".button-option-button").remove();
+	    	$(".text-option-button").remove();
+	    	$(".text-option-edit2").remove();
+	    	$(".box-option-button").remove();
+	    	$(".box-option-edit2").remove();
+	    	
+		}
+		var offset=$("."+previous_clicked_classname).offset();
+		var height=$("."+previous_clicked_classname).innerHeight();
+			
+		//alert( +offset.top + +"40");
+		if(!text_option_button_data){
+			text_option_button_data=true;
+		var button_group='<div class="btn-group button-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
+  <button type="button" class="btn btn-primary button-option-background-color " >Background-Color</button>\
+  <button type="button" class="btn btn-primary button-option-color " >Font-Color</button>\
+      <button type="button" class="btn btn-primary button-option-opacity " >Opacity</button>\
+  <button type="button" class="btn btn-primary button-option-link " >HyperLink</button>\
+   <div class="btn-group">\
+    <button type="button" class="btn btn-primary dropdown-toggle animatebutton " data-toggle="dropdown" >\
+    Animate <span class="caret"></span></button>\
+    <ul class="dropdown-menu" role="menu">\
+      <li><a href="#" class="animate_type">Animation Types</a></li>\
+      <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
+    </ul>\
+  </div>\
+  <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
+</div>';
+$("body").append(button_group);
+//$('.text-option-button').draggable({cancel:false});
+
+}
+e.stopPropogation();
+
+});
+
+
+
+	$('.Default').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Default').mouseenter(function(){
+		
+	var Button_text='<div  class="'+mm+'" style="position:absolute; border:.5px solid blue; top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-default DefaultButton" >Default</button></a></div>';
+	$("body").append(Button_text);
+	$(".DefaultButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".DefaultButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".DefaultButton").css("width","70px");
+	$(".DefaultButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Default').mouseleave(function(){
+	if($('.Default').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Primary').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Primary').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute; border:.5px solid blue; top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-primary PrimaryButton" >Primary</button></a></div>';
+	$("body").append(Button_text);
+	$(".PrimaryButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".PrimaryButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".PrimaryButton").css("width","70px");
+	$(".PrimaryButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Primary').mouseleave(function(){
+	if($('.Primary').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Success').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Success').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;  border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-success SuccessButton" >Success</button></a></div>';
+	$("body").append(Button_text);
+	$(".SuccessButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".SuccessButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".SuccessButton").css("width","70px");
+	$(".SuccessButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Success').mouseleave(function(){
+	if($('.Success').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Info').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Info').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;  border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-info InfoButton" >Info</button></a></div>';
+	$("body").append(Button_text);
+	$(".InfoButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".InfoButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".InfoButton").css("width","70px");
+	$(".InfoButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Info').mouseleave(function(){
+	if($('.Info').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//	
+
+	$('.Warning').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Warning').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute; border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-warning WarningButton" >Warning</button></a></div>';
+	$("body").append(Button_text);
+	$(".WarningButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".WarningButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".WarningButton").css("width","70px");
+	$(".WarningButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Warning').mouseleave(function(){
+	if($('.Warning').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Danger').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Danger').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+' dangerButton" style="position:absolute; border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-danger DangerButton" >Danger</button></a></div>';
+	$("body").append(Button_text);
+	$(".DangerButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".DangerButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".DangerButton").css("width","70px");
+	$(".DangerButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Danger').mouseleave(function(){
+	if($('.Danger').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+
+
+
 	$('.Bullet').click(function(){
 		$(this).data=('clicked',true);
 		x=x+50;
@@ -535,7 +1048,7 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Bullet').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul>\
+			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;border:.5px solid bLuE;top:'+y+'px;left:'+x+'px;"><ul>\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
@@ -567,7 +1080,7 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Numbered').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="1">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;border:.5px solid bLuE;top:'+y+'px;left:'+x+'px;"><ol type="1">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
@@ -599,7 +1112,7 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Disc').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:circle">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;border:.5px solid bLuE;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:circle">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
@@ -631,7 +1144,7 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Roman').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><ol type="I">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;border:.5px solid bLuE;top:'+y+'px;left:'+x+'px;"><ol type="I">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
@@ -663,7 +1176,7 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 	$('.Unordered').mouseenter(function(){
 		
-			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:none">\
+			var Bullet_text='<div class="'+mm+' list" contenteditable=tRuE style="position:absolute; border:.5px solid bLuE;top:'+y+'px;left:'+x+'px;"><ul style="list-style-type:none">\
   <li>First item</li>\
   <li>Second item</li>\
   <li>Third item</li>\
@@ -685,7 +1198,50 @@ $(document).on('click',".text-option-edit-italics",function(){
 	}
 	});
 	
-
+var dialogl3=$(".modal_inputs_for_box_hyper").dialog({
+	autoOpen:false,
+	show:{
+		effect:"blind",
+		duration:1000
+	},
+	hide:{
+		effect:'explode',
+		duration:1000
+	},
+	width:350,
+	height:350,
+	modal:true,
+	buttons:{
+		//"OK":function(e){
+			//e.preventDefault();
+			//link_to_urlimage();
+		//}
+		Cancel:function(){
+			dialogl3.dialog("close");
+		}
+	},
+	close:function(){
+		forml3[0].reset();
+		$('.duplicate-box-anchor').removeClass('just_clicked_for_hyper');
+	}
+});
+var forml3=dialogl3.find("form").on('submit',function(e){
+	e.preventDefault();
+	link_to_box();
+});
+$(document).on('click','.link-box',function(e){
+	$('.'+previous_clicked_classname).addClass('just_clicked_for_hyper')
+	dialogl3.dialog("open");
+	e.stopPropogation();
+});
+function link_to_box(){
+	if($('.url-for-box-hyper').val()!=""){
+		$('.just_clicked_for_hyper').attr('href',$('.url-for-box-hyper').val());
+	}
+	$('.just_clicked_for_hyper').attr('target',$('input[name="target_box"]:checked').val());
+	$('.duplicate-box-anchor').removeClass('just_clicked_for_hyper');
+	dialogl3.dialog("close");
+}
 
 	$(document).on('click', '.box-option-edit-border',function(e){
 
@@ -1014,8 +1570,20 @@ $(document).on('click', '.rectangular-box',function(e){
 		
 		$(".just_clicked_animate").removeClass("just_clicked_animate");
 		$(this).addClass("just_clicked_animate");
+		var previous_previous_clicked_classname=previous_clicked_classname;
+
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		if(previous_previous_clicked_classname!="-1"&&previous_previous_clicked_classname!=previous_clicked_classname)
+		{
+			text_option_button_data=false;
+	    	$(".button-option-button").remove();
+	    	$(".text-option-button").remove();
+	    	$(".text-option-edit2").remove();
+	    	$(".box-option-button").remove();
+	    	$(".box-option-edit2").remove();
+	    	
+		}
 		var offset=$("."+previous_clicked_classname).offset();
 		//alert($("."+previous_clicked_classname).innerHeight());
 		var height=$("."+previous_clicked_classname).innerHeight();
@@ -1049,8 +1617,16 @@ var isAdvancedOption=false;
 $(document).on('click', '.animatebutton',function(e){
 	e.stopPropogation();
 });
+$(document).on('click', '.Font_Size',function(e){
+	e.stopPropogation();
+});
+$(document).on('click', '.Font-Family',function(e){
+	e.stopPropogation();
+});
 
-$.fn.extend({
+
+
+/*$.fn.extend({
     animateCss: function (animationName) {
     	//alert(isAdvancedOption);
         	if(isAdvancedOption)
@@ -1073,7 +1649,7 @@ $.fn.extend({
         });
     }
 });
-
+*/
 
 
 
@@ -1109,7 +1685,7 @@ e.stopPropogation();
 
 });*/
 
-
+/*
 $(document).on('click', '.animation-advanced-options-once-select',function(e){
 	 	e.stopPropogation();
 
@@ -1179,12 +1755,7 @@ $(document).on('change', '.animation-advanced-options-iteration-select',function
 
 	e.stopPropogation();
 });
-
-
-
-
-
-
+*/
 
 /*$(document).on('click', '.animate-option',function(e){
 //alert("cd");
@@ -1531,7 +2102,7 @@ $(document).on('click', '.jello',function(e){
 	});
 */
 
-
+/*
 $(window).scroll(function() {
 			//alert("vs");
 
@@ -1565,7 +2136,7 @@ if(($(this).hasClass('animationOnlyOnce') && !$(this).data('hasAnimationHappened
 			}
 		});
 	});
-
+*/
 
 	$('.Rectangular-Box').click(function(){
 		$(this).data=('clicked',true);
@@ -1579,7 +2150,8 @@ if(($(this).hasClass('animationOnlyOnce') && !$(this).data('hasAnimationHappened
 
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
-			var box='<div class="'+mm+' rectangular-box" contenteditable=false style=" cursor:move; position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px;border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px"></div>';
+			var box='<div class="'+mm+' rectangular-box" contenteditable=false style=" cursor:move; position:absolute;top:'+y+'px;left:'+x+'px;height:50px;width:75px;"><a class="boxanchor" href="#"><div style="height:100%;width:100%;border-style: solid;border-width: 2px;opacity:1;box-shadow: 0px 0px 0px 0px"></div></a>'+
+			'<a href="#" class="duplicate-box-anchor"></a></div>';
 	$("body").append(box);
 	$("."+mm).draggable().resizable();
 	
@@ -1616,11 +2188,26 @@ function myFunction(){
 		var lengt=$('.iconanchor').length,k=0;
 		while(k<lengt){
 			$($('.iconanchor')[k]).attr({
-				'href':$('.duplicate-icon-anchor').eq(k).attr('href'),
-				'target':$('.duplicate-icon-anchor').eq(k).attr('target')
+				'href':$('.iconanchor').eq(k).siblings('.duplicate-anchor').attr('href'),
+				'target':$('.duplicate-icon-anchor').eq(k).siblings('.duplicate-anchor').attr('target')
 			});
 			k++;
 		}
+
+		var length=$('.boxanchor').length,j=0;
+		while(j<length){
+			$($('.boxanchor')[j]).attr({
+				'href':$('.boxanchor').eq(j).siblings('.duplicate-anchor').attr('href'),
+				'target':$('.boxanchor').eq(j).siblings('.duplicate-anchor').attr('target')//////////////////added
+			});
+			j++;
+		}
+
+		$('.isAnnimated').each(function(){
+
+			$(this).addClass($(this).data('animation_name')+'Selected');
+
+		});
     	
 document.getElementById("success").value=document.getElementById("body").innerHTML;document.getElementById("hidform").submit();}
 
@@ -1703,7 +2290,3 @@ function css2json(css) {
     return s;
 }
 
-
-function info(){
-document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
-}
