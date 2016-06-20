@@ -501,6 +501,326 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 
 
+//from this .............................................................................................
+
+
+
+
+
+$(document).on('click', '.button-option-background-color',function(){
+	$(".button-option-button").remove();
+	var offset=$("."+previous_clicked_classname).offset();
+ 	var text='<input type="color" class="button-option-background-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+ 	$("body").append(text);
+ 	e.preventDefault();
+ 	e.stopPropogation();
+
+ });
+$(document).on('change', '.button-option-background-color-select',function(){
+		text_option_button_data=false;
+	var colorvalue=$(".button-option-background-color-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("background-color",colorvalue);
+	$(".button-option-background-color-select").remove();
+	e.preventDefault();
+ 	e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-background-color-select',function(e){
+	//e.preventDefault();
+ 	e.stopPropogation();
+
+});
+
+
+$(document).on('click', '.button-option-color',function(){
+	$(".button-option-button").remove();
+	var offset=$("."+previous_clicked_classname).offset();
+ 	var text='<input type="color" class="button-option-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
+ 	$("body").append(text);
+ 	e.preventDefault();
+ 	e.stopPropogation();
+
+ });
+$(document).on('change', '.button-option-color-select',function(){
+		text_option_button_data=false;
+	var colorvalue=$(".button-option-color-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("color",colorvalue);
+	$(".button-option-color-select").remove();
+	e.preventDefault();
+ 	e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-color-select',function(e){
+	//e.preventDefault();
+ 	e.stopPropogation();
+
+});
+
+
+
+
+$(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoButton , .PrimaryButton , .DefaultButton",function(){
+	
+	$(".just_clicked_animate").removeClass("just_clicked_animate");
+		$(this).addClass("just_clicked_animate");
+		
+	var forclass=($(this).closest('div').parent().parent().attr("class"));
+		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
+		var offset=$("."+previous_clicked_classname).offset();
+		var height=$("."+previous_clicked_classname).innerHeight();
+			
+		//alert( +offset.top + +"40");
+		if(!text_option_button_data){
+			text_option_button_data=true;
+		var button_group='<div class="btn-group button-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
+  <button type="button" class="btn btn-primary button-option-background-color " >Background-Color</button>\
+  <button type="button" class="btn btn-primary button-option-color " >Font-Color</button>\
+  <button type="button" class="btn btn-primary button-option-link " >HyperLink</button>\
+   <div class="btn-group">\
+    <button type="button" class="btn btn-primary dropdown-toggle animatebutton " data-toggle="dropdown" >\
+    Animate <span class="caret"></span></button>\
+    <ul class="dropdown-menu" role="menu">\
+      <li><a href="#" class="animate_type">Animation Types</a></li>\
+      <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
+    </ul>\
+  </div>\
+  <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
+</div>';
+$("body").append(button_group);
+//$('.text-option-button').draggable({cancel:false});
+
+}
+e.stopPropogation();
+
+});
+
+
+
+	$('.Default').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Default').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-default DefaultButton" >Default</button></a></div>';
+	$("body").append(Button_text);
+	$(".DefaultButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".DefaultButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".DefaultButton").css("width","70px");
+	$(".DefaultButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Default').mouseleave(function(){
+	if($('.Default').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Primary').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Primary').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-primary PrimaryButton" >Primary</button></a></div>';
+	$("body").append(Button_text);
+	$(".PrimaryButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".PrimaryButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".PrimaryButton").css("width","70px");
+	$(".PrimaryButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Primary').mouseleave(function(){
+	if($('.Primary').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Success').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Success').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-success SuccessButton" >Success</button></a></div>';
+	$("body").append(Button_text);
+	$(".SuccessButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".SuccessButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".SuccessButton").css("width","70px");
+	$(".SuccessButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Success').mouseleave(function(){
+	if($('.Success').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Info').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Info').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-info InfoButton" >Info</button></a></div>';
+	$("body").append(Button_text);
+	$(".InfoButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".InfoButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".InfoButton").css("width","70px");
+	$(".InfoButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Info').mouseleave(function(){
+	if($('.Info').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//	
+
+	$('.Warning').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Warning').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-warning WarningButton" >Warning</button></a></div>';
+	$("body").append(Button_text);
+	$(".WarningButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".WarningButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".WarningButton").css("width","70px");
+	$(".WarningButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Warning').mouseleave(function(){
+	if($('.Warning').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+//
+	$('.Danger').click(function(){
+		$(this).data=('clicked',true);
+		x=x+50;
+		y=y+50;
+		mm=mm+1;
+	});
+
+	$('.Danger').mouseenter(function(){
+		
+	var Button_text='<div class="'+mm+' dangerButton" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a href="#" ><button type="button" contenteditable=tRuE class="btn btn-danger DangerButton" >Danger</button></a></div>';
+	$("body").append(Button_text);
+	$(".DangerButton").draggable({cancel: false}).resizable();
+	$("."+mm).draggable({cancel: ".DangerButton"});
+	$(".ui-wrapper").css("padding-bottom","1px");
+	$(".ui-wrapper").css("padding-right","0px");
+	$(".DangerButton").css("width","70px");
+	$(".DangerButton").css("height","35px");
+	$(".ui-wrapper").css("width","96px");
+	$(".ui-wrapper").css("height","50px");
+
+	});
+
+	$('.Danger').mouseleave(function(){
+	if($('.Danger').data('clicked'))
+	{
+		$(this).data=('clicked',false);
+	}
+	else{
+	
+		$("."+mm).remove();
+
+	
+	}
+	});
+
+
+
+
+
+
+
+//till this ...............................................................................................
+
+
+
+
+
+
+
 
 
 	$('.Bullet').click(function(){
@@ -916,6 +1236,8 @@ var offset=$("."+previous_clicked_classname).offset();
 
 	});
 $(document).on('change', '.box-option-edit-color-border-select',function(){
+		text_option_button_data=false;
+
 	var colorvalue=$(".box-option-edit-color-border-select").val();
 	$("."+previous_clicked_classname).css("border-bottom-color",colorvalue);
 	$("."+previous_clicked_classname).css("border-top-color",colorvalue);
@@ -949,7 +1271,7 @@ $(document).on('click', '.box-option-edit-color-fill-select',function(e){
 });
 
 $(document).on('change', '.box-option-edit-color-fill-select',function(){
-
+	text_option_button_data=false;
 	var colorvalue=$(".box-option-edit-color-fill-select").val();
 $("."+previous_clicked_classname).css("background-color",colorvalue);
 	$(".box-option-edit-color-fill-select").remove();
@@ -995,7 +1317,7 @@ $(document).on('click', '.rectangular-box',function(e){
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
 			var offset=$("."+previous_clicked_classname).offset();
-			alert($("."+previous_clicked_classname).innerHeight());
+			//alert($("."+previous_clicked_classname).innerHeight());
 			var height=$("."+previous_clicked_classname).innerHeight();
 		$(".box-edit-color-options").remove();
 
@@ -1009,7 +1331,7 @@ $(document).on('click', '.rectangular-box',function(e){
     Animate <span class="caret"></span></button>\
     <ul class="dropdown-menu" role="menu">\
       <li><a href="#" class="animate-option">Animation Types</a></li>\
-      <li><a href="#" class="animate-advanced-option">Animantion Advanced Options</a></li>\
+      <li><a href="#" class="animate-advanced-option">Animation Advanced Options</a></li>\
     </ul>\
   </div>\
   <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
@@ -1365,6 +1687,16 @@ $(document).on('mouseenter', '.jello',function(e){
 	});
 
 
+$(document).on('click', '.none',function(e){
+	$("."+previous_clicked_classname).data('animation_name','none');
+	$("."+previous_clicked_classname).addClass('isAnnimated');
+	$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+
+	e.stopPropogation();
+
+	});
 
 $(document).on('click', '.pulse',function(e){
 	$("."+previous_clicked_classname).data('animation_name','pulse');
