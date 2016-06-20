@@ -502,12 +502,34 @@ $(document).on('click',".text-option-edit-italics",function(){
 
 
 //from this .............................................................................................
+$(document).on('click', '.button-option-opacity',function(e){
 
 
+	$(".button-opacity-options").remove();
 
+
+var text='<input type="text" name="button_opacity" placeholder="Opacity :  '+$("."+previous_clicked_classname).find('[class*="btn"]').css("opacity")+'" class="button-option-opacity-select button-opacity-options" style="position:absolute;top:50px;width:100px;right:130px">	';
+
+$(".button-option-button").append(text);
+e.stopPropogation();
+
+});
+$(document).on('click', '.button-option-opacity-select',function(e){
+	 	e.stopPropogation();
+
+	});
+$(document).on('change', '.button-option-opacity-select',function(e){
+	var changed_opacity=$(".button-option-opacity-select").val();
+	$("."+previous_clicked_classname).find('[class*="btn"]').css("opacity",changed_opacity);	
+	 	e.stopPropogation();
+
+	});
+
+//..........................................................................
 
 
 $(document).on('click', '.button-option-background-color',function(){
+	$(".button-opacity-options").remove();
 	$(".button-option-button").remove();
 	var offset=$("."+previous_clicked_classname).offset();
  	var text='<input type="color" class="button-option-background-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
@@ -533,6 +555,7 @@ $(document).on('click', '.button-option-background-color-select',function(e){
 
 
 $(document).on('click', '.button-option-color',function(){
+	$(".button-opacity-options").remove();
 	$(".button-option-button").remove();
 	var offset=$("."+previous_clicked_classname).offset();
  	var text='<input type="color" class="button-option-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
@@ -575,6 +598,7 @@ $(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoB
 		var button_group='<div class="btn-group button-option-button draggable" style="opacity:0.9;position:absolute;top:'+ (+offset.top + +"20" + +height) +'px;left:'+ (+offset.left - +"50") +'px;">\
   <button type="button" class="btn btn-primary button-option-background-color " >Background-Color</button>\
   <button type="button" class="btn btn-primary button-option-color " >Font-Color</button>\
+    <button type="button" class="btn btn-primary button-option-opacity " >Opacity</button>\
   <button type="button" class="btn btn-primary button-option-link " >HyperLink</button>\
    <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle animatebutton " data-toggle="dropdown" >\
