@@ -205,14 +205,14 @@ $(document).ready(function(){
 
 
 
-$(document).on('click', function(event) {
-  if (!$(event.target).is(".text-option-button")) {
+$(document).on('click', function(e) {
+  if (!$(e.target).is(".text-option-button") && !$(e.target).closest('.'+previous_clicked_classname).length) {
 
   previous_clicked_classname="-1";
     if(text_option_button_data){
     	$(".text-option-button").remove();
     	$(".text-option-edit2").remove();
-    	$(".box-option-button").remove();alert("wrong");
+    	$(".box-option-button").remove();
     	$(".box-option-edit2").remove();
     	//$(".animation-type-options").remove();
     	//$(".animation-advanced-options").remove();
@@ -252,12 +252,13 @@ $("body").append(button_group);
 $('.text-option-button').draggable({cancel:false});
 
 }
-e.stopPropogation();
+//e.stopPropogation();
 
 	});
 $(document).on('click', 'h2',function(e){
 		$(".just_clicked_animate").removeClass("just_clicked_animate");
 		$(this).addClass("just_clicked_animate");
+
 		var forclass=($(this).closest('div').attr("class"));
 		previous_clicked_classname=forclass.substr(0,forclass.indexOf(' '));
 				//alert(previous_clicked_classname);
@@ -281,7 +282,7 @@ $(document).on('click', 'h2',function(e){
 $("body").append(button_group);
 $('.text-option-button').draggable({cancel:false});
 }
-e.stopPropogation();
+//e.stopPropogation();
 
 	});
 $(document).on('click', 'h4',function(e){
@@ -310,7 +311,7 @@ $("body").append(button_group);
 $('.text-option-button').draggable({cancel:false});
 
 }
-e.stopPropogation();
+//e.stopPropogation();
 
 	});
 
@@ -320,35 +321,44 @@ $('.'+previous_clicked_classname).remove();
 
 });
 
-$(document).on('click', '.Font-Family-Times_New_Roman',function(){
-	document.execCommand('fontName',false,"Times New Roman");});
+$(document).on('click', '.Font-Family-Times_New_Roman',function(e){
+	document.execCommand('fontName',false,"Times New Roman");
+    e.preventDefault();
+});
 
 
-$(document).on('click', '.Font-Family-Arial',function(){
-	document.execCommand('fontName',false,"Arial");});
+$(document).on('click', '.Font-Family-Arial',function(e){
+	document.execCommand('fontName',false,"Arial");
+    e.preventDefault();
+});
 
-$(document).on('click', '.Font-Family-Comic_Sans',function(){
-	document.execCommand('fontName',false,"'Comic Sans MS',cursive,sans-serif");});
+$(document).on('click', '.Font-Family-Comic_Sans',function(e){
+	document.execCommand('fontName',false,"'Comic Sans MS',cursive,sans-serif");
+    e.preventDefault();
+});
 
-$(document).on('click', '.Font-Family-Courier_New',function(){
-	document.execCommand('fontName',false,"Courier New");});
+$(document).on('click', '.Font-Family-Courier_New',function(e){
+	document.execCommand('fontName',false,"Courier New");
+    e.preventDefault();
+});
 
 $(document).on('click', '.text-option-Font-color',function(){
 	$(".text-option-button").remove();
 	var offset=$("."+previous_clicked_classname).offset();
-	var text='<input type="color" class="text-option-Font-color-select" style="position:absolute;top:'+ (+offset.top - +"40") +'px;right:'+ (+offset.left - +"50") +'px;">';
+	var text='<div style="height:0;overflow:hidden;position:absolute;top:'+ (+offset.top - +"40") +'px;right:'+ (+offset.left - +"50") +'px;"><input type="color" class="text-option-Font-color-select"></div>';
   	
  	$("body").append(text);
-
+ 	$('.text-option-Font-color-select').click();
  });
 $(document).on('change', '.text-option-Font-color-select',function(){
+	text_option_button_data=false;
 	var colorvalue=$(".text-option-Font-color-select").val();
 	document.execCommand('foreColor',false,colorvalue);
 	$(".text-option-Font-color-select").remove();
 
 });
 
-$(document).on('click', '.Font-Size-10px',function(){
+$(document).on('click', '.Font-Size-10px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -357,8 +367,9 @@ $(document).on('click', '.Font-Size-10px',function(){
             fontElements[i].style.fontSize = "10px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-12px',function(){
+$(document).on('click', '.Font-Size-12px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -367,8 +378,9 @@ $(document).on('click', '.Font-Size-12px',function(){
             fontElements[i].style.fontSize = "12px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-14px',function(){
+$(document).on('click', '.Font-Size-14px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -387,8 +399,9 @@ $(document).on('click', '.Font-Size-16px',function(){
             fontElements[i].style.fontSize = "16px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-18px',function(){
+$(document).on('click', '.Font-Size-18px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -397,8 +410,9 @@ $(document).on('click', '.Font-Size-18px',function(){
             fontElements[i].style.fontSize = "18px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-20px',function(){
+$(document).on('click', '.Font-Size-20px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -407,8 +421,9 @@ $(document).on('click', '.Font-Size-20px',function(){
             fontElements[i].style.fontSize = "20px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-24px',function(){
+$(document).on('click', '.Font-Size-24px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -417,8 +432,9 @@ $(document).on('click', '.Font-Size-24px',function(){
             fontElements[i].style.fontSize = "24px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-28px',function(){
+$(document).on('click', '.Font-Size-28px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -427,8 +443,9 @@ $(document).on('click', '.Font-Size-28px',function(){
             fontElements[i].style.fontSize = "28px";
         }
     }
+    e.preventDefault();
 });
-$(document).on('click', '.Font-Size-32px',function(){
+$(document).on('click', '.Font-Size-32px',function(e){
 	document.execCommand("fontSize", false, "7");
    var fontElements = document.getElementsByTagName("font");
     for (var i = 0, len = fontElements.length; i < len; ++i) {
@@ -437,6 +454,7 @@ $(document).on('click', '.Font-Size-32px',function(){
             fontElements[i].style.fontSize = "32px";
         }
     }
+    e.preventDefault();
 });
 
 
@@ -698,8 +716,10 @@ e.stopPropogation();
 });
 $(document).on('click', '.box-option-edit-border-width-select',function(e){
 	 	e.stopPropogation();
-
-	});
+});
+$(document).on('click', '.box-option-edit-color',function(e){
+	 	e.stopPropogation();
+});
 $(document).on('change', '.box-option-edit-border-width-select',function(e){
 	var changed_border_width=$(".box-option-edit-border-width-select").val();
 	$("."+previous_clicked_classname).css("border-width",changed_border_width+"px");	
@@ -907,15 +927,16 @@ var offset=$("."+previous_clicked_classname).offset();
 	$(".box-option-edit2").remove();
  	var text='<input type="color" class="box-option-edit-color-border-select box-edit-color-options" style="position:absolute;top:'+(+offset.top + +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
+ 	e.preventDefault();
  	e.stopPropogation();
-
- });
+});
 
 	$(document).on('click', '.box-option-edit-color-border-select',function(e){
 	 	e.stopPropogation();
-
+	 	e.preventDefault();
 	});
 $(document).on('change', '.box-option-edit-color-border-select',function(){
+	text_option_button_data=false;
 	var colorvalue=$(".box-option-edit-color-border-select").val();
 	$("."+previous_clicked_classname).css("border-bottom-color",colorvalue);
 	$("."+previous_clicked_classname).css("border-top-color",colorvalue);
@@ -938,17 +959,18 @@ var offset=$("."+previous_clicked_classname).offset();
 	$(".box-option-edit2").remove();
  	var text='<input type="color" class="box-option-edit-color-fill-select box-edit-color-options" style="position:absolute;top:'+ (+offset.top + +"40") +'px;left:'+ (+offset.left - +"50") +'px;">';
  	$("body").append(text);
+ 	e.preventDefault();
  	e.stopPropogation();
-
+ 	
 
  });
 $(document).on('click', '.box-option-edit-color-fill-select',function(e){
 	 	e.stopPropogation();
-
+		e.preventDefault();
 });
 
 $(document).on('change', '.box-option-edit-color-fill-select',function(){
-
+	text_option_button_data=false;
 	var colorvalue=$(".box-option-edit-color-fill-select").val();
 $("."+previous_clicked_classname).css("background-color",colorvalue);
 	$(".box-option-edit-color-fill-select").remove();
@@ -1018,7 +1040,7 @@ $("body").append(button_group);
 $('.box-option-button').draggable({cancel:false});
 
 }
-e.stopPropogation();
+//e.stopPropogation();
 
 	});
 
@@ -1605,8 +1627,10 @@ document.getElementById("success").value=document.getElementById("body").innerHT
 
 		
 function modalBox(){
+	
 	document.getElementById("modal").style.display="block";
 	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page CANNOT be edited later. Contents WILL be overwritten irrespective of earlier contents.<br><span style='color:red'>Caution</span>: Spaces between Elements may increase in final output.<br><br><span onclick='myFunction()' style=' width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+
 }
 function removeBox(){
 	document.getElementById("modal").style.display="none";
@@ -1616,10 +1640,12 @@ function del(){
 	
 	document.getElementById("modal").style.display="block";
 	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+
 }
 
 
-function preView(){   
+function preView(){ 
+  
 	$(".text-option-edit2").remove();
  $(".box-option-button").remove();
  $(".box-option-edit2").remove();
@@ -1678,16 +1704,6 @@ function css2json(css) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+function info(){
+document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+}

@@ -17,7 +17,7 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript" src="editor-js.js"></script>
 <script type="text/javascript" src="editor.js"></script>
-<link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+<link rel="stylesheet" href="animate.css">
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -30,18 +30,20 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 	<div class="row pagebar">
 	<div class="col-lg-4 page_information" >PageEditor</div>
 	<div class="col-lg-4 tools">Tools</div>
-	<div class="col-lg-2 "><button type="button" onclick="preView()" class="btn btn-primary">Preview</button></div>
+	<div class="col-lg-2" ><button type="button" onclick="preView()" class="btn btn-primary preview">Preview</button></div>
 	
 <form id="hidform" method="post" action="finalpost.php">
 	<input type="hidden" name=file id=success value="">
 	<?php echo "<input type='hidden' name=add id=address value='$_SERVER[REQUEST_URI]'>"?>
 	</form>
-	<button class="btn btn-success" onclick="modalBox()">Save </button>
-	<button type="button" class="btn btn-primary" onclick="del()" style="background-color:#ff3333;">Cancel</button>
+	<button class="btn btn-success save" onclick="modalBox()">Save </button>
+	<button type="button" class="btn btn-primary cancel" onclick="del()" style="background-color:#ff3333;">Cancel</button>
 	<form id="hidform1" method="post" action="del.php">
 	<?php echo "<input type='hidden' name=add id=address1 value='$_SERVER[REQUEST_URI]'>"?>
 	</form>
+	<button style="positon:absolute; margin-left: 50px;margin-bottom: 30px;background-color:#ff8000;border: 2px solid #ff8000;" onclick="info();" class="btn btn-success"> Info </button>
 	</div>
+	
 	<div class="row header">
 	<div class="col-lg-12 text_header">Header</div>
 	</div>

@@ -18,7 +18,7 @@ $(document).on('click',function(e){
 	
 	var click_x=e.pageX,click_y=e.pageY;
 		$(".editbg").remove();
-	if(!$(e.target).closest(".imagediv").length && !$(e.target).closest(".icondiv").length && !$(e.target).is(".fbviddiv") && !$(e.target).is(".youtubeviddiv") && body_has_bgimage){
+	if(!$(e.target).closest(".imagediv").length && !$(e.target).closest(".icondiv").length && !$(e.target).is(".fbviddiv") && !$(e.target).is(".youtubeviddiv") && !$(e.target).closest("p").length && !$(e.target).closest("h2").length && !$(e.target).closest("h4").length && !$(e.target).closest(".list").length && !$(e.target).closest(".rectangular-box").length && body_has_bgimage){
 		var bgoptions='<div class="btn-group editbg" style="position:absolute;left:'+click_x+'px;top:'+click_y+'px;">'+		
 		'<button class="btn btn-primary position-bgimage">Background Position</button>'+
 		'<div class="dropdown">'+
@@ -843,7 +843,7 @@ $("input[name='type_of_icon'][value='material']").click(function(){
 function addicon(){
 	
 	if($("input[name='type_of_icon']:checked").val()=="fa" && $(".text_for_fa").val()!=""){
-		var iconvar='<div class="icondiv"><a href="#" class="iconanchor"><i class="img-circle iconic '+$(".text_for_fa").val()+'" style="font-size:30px;color:black;"></i></a>'+
+		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor"><i class="iconic '+$(".text_for_fa").val()+'" style="font-size:30px;color:black;"></i></a>'+
 	'<a class="duplicate-icon-anchor" href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+	
@@ -865,7 +865,7 @@ function addicon(){
 	}
 
 	if($("input[name='type_of_icon']:checked").val()=="material" && $(".text_for_mi").val()!=""){
-		var iconvar='<div class="icondiv" style="height:auto;width:auto;"><a href="#" class="iconanchor"><i class="infinite iconic material-icons" style="color:black;font-size:30px;">'+$(".text_for_mi").val()+'</i></a>'+
+		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor"><i class="iconic material-icons" style="color:black;font-size:30px;">'+$(".text_for_mi").val()+'</i></a>'+
 	'<a class="duplicate-icon-anchor" href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+
@@ -1079,7 +1079,7 @@ isAdvancedOption=false;
 e.preventDefault();e.stopPropogation();
 });
 $(document).on('click',function(e){
-	if(!$(e.target).closest('.animation-advanced-options').length){
+	if(!$(e.target).closest('.animation-advanced-options').length && !$(e.target).closest(".just_clicked_animate").length){
 		$('.animation-advanced-options').remove();
 		isAdvancedOption=false;
 	}
@@ -1215,7 +1215,8 @@ e.stopPropogation();
 });
 
 $(document).on('click',function(e){
-	if(!$(e.target).closest('.animation-type-options').length){alert("HI");
+	if(!$(e.target).closest('.animation-type-options').length && !$(e.target).closest('.just_clicked_animate').length){
+		text_option_button_data=false;
 		$('.animation-type-options').remove();
 	}
 });
@@ -1368,6 +1369,16 @@ $(document).on('mouseenter', '.jello',function(e){
 
 	});
 
+$(document).on('click', '.none',function(e){
+	$(".just_clicked_animate").data('animation_name','none');
+	$(".just_clicked_animate").addClass('isAnnimated');
+	$('.animationType').css("background-color","#d3d3d3");
+	$(this).css("background-color","#7ACEF4");
+
+
+	e.stopPropogation();
+
+	});
 
 $(document).on('click', '.pulse',function(e){
 	$(".just_clicked_animate").data('animation_name','pulse');
@@ -1520,8 +1531,10 @@ $(window).scroll(function() {
 									//alert(imagePos);
 
 			var topOfWindow = $(window).scrollTop();
+			//alert($(window).height());
+			var windowHeight=$(window).height();
 			//alert(topOfWindow);
-				if ((imPos < topOfWindow+800)&&(imPos > topOfWindow)&&(!$(this).data('played'))) {
+				if ((imPos < topOfWindow+windowHeight-($(this).innerHeight()))&&(imPos > topOfWindow)&&(!$(this).data('played'))) {
 							//alert("vs");	
 						if($(this).data('animation_name')!='none')
 					{	var name=$(this).data('animation_name')	;
@@ -1546,3 +1559,8 @@ $(window).scroll(function() {
 
 
 });
+
+function info(){
+	alert("info");
+document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'>Are you Sure?</span><br>This page WILL be deleted now and you will be redirected to home page<br><br><span onclick='delFinal();' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+}
