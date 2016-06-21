@@ -1,0 +1,117 @@
+
+<html><head><link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script>
+$.fn.extend({
+    animateCss: function (animationName) {
+        	
+        var animationEnd = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+        $(this).data=("animationName",animationName);
+        $(this).addClass("animated " + animationName).one(animationEnd, function() {
+        	if($(this).hasClass("animated"))
+            {$(this).removeClass("animated");}
+ 			if($(this).hasClass(animationName))
+            {$(this).removeClass(animationName);}
+       
+        });
+    }
+});
+
+
+
+
+$(window).scroll(function() {
+
+
+		$(".isAnnimated").each(function(){
+
+		if(($(this).hasClass("animationOnlyOnce") && !$(this).hasClass("animationHasHappened")) || !$(this).hasClass("animationOnlyOnce"))	
+		{		
+		
+
+			var imagePos = $(this).offset().top;
+
+
+			var topOfWindow = $(window).scrollTop();
+			var windowHeight=$(window).height();
+
+				if ((imagePos < topOfWindow+windowHeight-($(this).innerHeight())/2.0)&&(imagePos > topOfWindow)&&(!$(this).hasClass("played"))) {
+
+					// 	if($(this).data("animation_name")!="none")
+					// {	var name=$(this).data("animation_name")	;
+					// 	$(this).animateCss(name);
+					// 		$(this).addClass("played");
+
+					// }
+					if($(this).hasClass("pulseSelected"))
+						$(this).animateCss("pulse");
+
+					if($(this).hasClass("bounceInSelected"))
+						$(this).animateCss("bounceIn");
+
+					if($(this).hasClass("fadeInSelected"))
+						$(this).animateCss("fadeIn");
+
+					if($(this).hasClass("zoomInSelected"))
+						$(this).animateCss("zoomIn");
+
+					if($(this).hasClass("rollInSelected"))
+						$(this).animateCss("rollIn");
+					
+					if($(this).hasClass("slideInLeftSelected"))
+						$(this).animateCss("slideInLeft");
+
+					if($(this).hasClass("slideInRightSelected"))
+						$(this).animateCss("slideInRight");
+
+					if($(this).hasClass("flipInXSelected"))
+						$(this).animateCss("flipInX");
+					
+					if($(this).hasClass("flipInYSelected"))
+						$(this).animateCss("flipInY");
+
+					if($(this).hasClass("lightSpeedInSelected"))
+						$(this).animateCss("lightSpeedIn");
+
+					if($(this).hasClass("shakeSelected"))
+						$(this).animateCss("shake");
+					
+					if($(this).hasClass("swingSelected"))
+						$(this).animateCss("swing");
+
+					if($(this).hasClass("rubberBandSelected"))
+						$(this).animateCss("rubberBand");
+					
+					if($(this).hasClass("wobbleSelected"))
+						$(this).animateCss("wobble");
+
+					if($(this).hasClass("jelloSelected"))
+						$(this).animateCss("jello");
+
+					$(this).addClass("played");
+
+
+				}
+				if((imagePos > topOfWindow+windowHeight-($(this).innerHeight())/2.0)||(imagePos < topOfWindow))
+									$(this).removeClass("played");
+
+				if($(this).hasClass("animationOnlyOnce"))
+				{	
+
+					$(this).addClass("animationHasHappened");	
+				}
+
+			}
+
+		});
+	});
+
+	</script>
+	</head>

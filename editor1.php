@@ -144,7 +144,6 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 </div>
 
 
-<!--Starts here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <div class="modal-input-for-bg-sizes" title="Size the background image">
 	<p>Type in x and y,for the size of background image would be x% of total width and y% of total height</p>
 	<form>
@@ -164,10 +163,10 @@ if((("/".$_COOKIE["webifiedusr5"])!=$_SERVER['REQUEST_URI'])){if((("/".$_COOKIE[
 	<form>
 	<fieldset>
 		<label>% from left</label>
-		<input type="number" min="0" max="100" placeholder="ex: 50" class="x-input-for-bg-pos" style="width:90%;">
+		<input type="number" min="0" max="100" value="50" class="x-input-for-bg-pos" style="width:90%;">
 		<br>
 		<label>% from top</label>
-		<input type="number" min="0" max="100" placeholder="ex: 50" class="y-input-for-bg-pos" style="width:90%;">	
+		<input type="number" min="0" max="100" value="50" class="y-input-for-bg-pos" style="width:90%;">	
 		<input type="submit" style="display:none">	
 	</fieldset>
 	</form>

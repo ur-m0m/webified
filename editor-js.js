@@ -790,7 +790,7 @@ $(document).on('click', '.button-option-color-select',function(e){
 
 
 
-$(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoButton , .PrimaryButton , .DefaultButton",function(){
+$(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoButton , .PrimaryButton , .DefaultButton",function(e){
 	
 	$(".just_clicked_animate").removeClass("just_clicked_animate");
 		$(this).addClass("just_clicked_animate");
@@ -818,7 +818,7 @@ $(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoB
   <button type="button" class="btn btn-primary button-option-background-color " >Background-Color</button>\
   <button type="button" class="btn btn-primary button-option-color " >Font-Color</button>\
       <button type="button" class="btn btn-primary button-option-opacity " >Opacity</button>\
-  <button type="button" class="btn btn-primary button-option-link " >HyperLink</button>\
+  <button type="button" class="btn btn-primary link-box">HyperLink<span class="caret"></span></button>\
    <div class="btn-group">\
     <button type="button" class="btn btn-primary dropdown-toggle animatebutton " data-toggle="dropdown" >\
     Animate <span class="caret"></span></button>\
@@ -827,14 +827,14 @@ $(document).on('click',".DangerButton , .WarningButton , .SuccessButton , .InfoB
       <li><a href="#" class="advance_animate">Animantion Advanced Options</a></li>\
     </ul>\
   </div>\
-  <button type="button" class="btn btn-primary delete-option " >Delete Element</button>\
+  <button type="button" class="btn btn-primary delete-option">Delete Element</button>\
 </div>';
 $("body").append(button_group);
 //$('.text-option-button').draggable({cancel:false});
 
 }
-e.stopPropogation();
-
+e.preventDefault();
+//e.stopPropogation();
 });
 
 
@@ -848,16 +848,17 @@ e.stopPropogation();
 
 	$('.Default').mouseenter(function(){
 		
-	var Button_text='<div  class="'+mm+'" style="position:absolute; border:.5px solid blue; top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-default DefaultButton" >Default</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-default DefaultButton" style="height:100%;width:100%;">Default</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".DefaultButton").draggable({cancel: false}).resizable();
+	$(".DefaultButton").draggable({cancel:false}).resizable();
 	$("."+mm).draggable({cancel: ".DefaultButton"});
-	$(".ui-wrapper").css("padding-bottom","1px");
+	/*$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".DefaultButton").css("width","70px");
 	$(".DefaultButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -883,16 +884,17 @@ e.stopPropogation();
 
 	$('.Primary').mouseenter(function(){
 		
-	var Button_text='<div class="'+mm+'" style="position:absolute; border:.5px solid blue; top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-primary PrimaryButton" >Primary</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-primary PrimaryButton" style="height:100%;width:100%;">Primary</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".PrimaryButton").draggable({cancel: false}).resizable();
+	$(".PrimaryButton").draggable({cancel:false}).resizable();
 	$("."+mm).draggable({cancel: ".PrimaryButton"});
-	$(".ui-wrapper").css("padding-bottom","1px");
+	/*$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".PrimaryButton").css("width","70px");
 	$(".PrimaryButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -918,16 +920,17 @@ e.stopPropogation();
 
 	$('.Success').mouseenter(function(){
 		
-	var Button_text='<div class="'+mm+'" style="position:absolute;  border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-success SuccessButton" >Success</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-success SuccessButton" style="height:100%;width:100%;">Success</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".SuccessButton").draggable({cancel: false}).resizable();
+	$(".SuccessButton").draggable({cancel:false}).resizable();
 	$("."+mm).draggable({cancel: ".SuccessButton"});
-	$(".ui-wrapper").css("padding-bottom","1px");
+	/*$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".SuccessButton").css("width","70px");
 	$(".SuccessButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -953,16 +956,17 @@ e.stopPropogation();
 
 	$('.Info').mouseenter(function(){
 		
-	var Button_text='<div class="'+mm+'" style="position:absolute;  border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-info InfoButton" >Info</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-info InfoButton" style="height:100%;width:100%;">Info</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".InfoButton").draggable({cancel: false}).resizable();
+	$(".InfoButton").draggable({cancel:false}).resizable();
 	$("."+mm).draggable({cancel: ".InfoButton"});
-	$(".ui-wrapper").css("padding-bottom","1px");
+	/*$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".InfoButton").css("width","70px");
 	$(".InfoButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -989,16 +993,17 @@ e.stopPropogation();
 
 	$('.Warning').mouseenter(function(){
 		
-	var Button_text='<div class="'+mm+'" style="position:absolute; border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-warning WarningButton" >Warning</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-warning WarningButton" style="height:100%;width:100%;">Warning</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".WarningButton").draggable({cancel: false}).resizable();
+	$(".WarningButton").draggable({cancel:false}).resizable();
 	$("."+mm).draggable({cancel: ".WarningButton"});
-	$(".ui-wrapper").css("padding-bottom","1px");
+	/*$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".WarningButton").css("width","70px");
 	$(".WarningButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -1024,16 +1029,17 @@ e.stopPropogation();
 
 	$('.Danger').mouseenter(function(){
 		
-	var Button_text='<div class="'+mm+' dangerButton" style="position:absolute; border:.5px solid blue;top:'+y+'px;left:'+x+'px;"><a style="text-decoration:none;" href="#" ><button type="button" contenteditable=tRuE class="btn btn-danger DangerButton" >Danger</button></a></div>';
+	var Button_text='<div  class="'+mm+'" style="position:absolute;top:'+y+'px;left:'+x+'px;"><a style="display:block;height:70px;width:110px;text-decoration:none;" href="#" class="boxanchor"><button type="button" contenteditable=tRuE class="btn btn-danger DangerButton" style="height:100%;width:100%;">Danger</button></a>'+
+	'<a class="duplicate-box-anchor" href="#"></a></div>';
 	$("body").append(Button_text);
-	$(".DangerButton").draggable({cancel: false}).resizable();
-	$("."+mm).draggable({cancel: ".DangerButton"});
+	$(".DangerButton").draggable({cancel:false}).resizable();
+	/*$("."+mm).draggable({cancel: ".DangerButton"});
 	$(".ui-wrapper").css("padding-bottom","1px");
 	$(".ui-wrapper").css("padding-right","0px");
 	$(".DangerButton").css("width","70px");
 	$(".DangerButton").css("height","35px");
 	$(".ui-wrapper").css("width","96px");
-	$(".ui-wrapper").css("height","50px");
+	$(".ui-wrapper").css("height","50px");*/
 
 	});
 
@@ -1622,9 +1628,9 @@ $("body").append(button_group);
 $('.box-option-button').draggable({cancel:false});
 
 }
+e.preventDefault();
 //e.stopPropogation();
-
-	});
+});
 
 var isAdvancedOption=false;
 
@@ -2191,7 +2197,20 @@ function myFunction(){
     	$(".text-option-edit2").remove();
     	$(".box-option-button").remove();
     	$(".box-option-edit2").remove();
+    	$(".modal-input-for-bg-sizes").remove();
+    	$(".modal-input-for-bg-pos").remove();
+    	$(".modal-input-for-bgimage").remove();
+    	$(".modal-input-for-generalimage").remove();
+    	$(".editbg").remove();
+    	$(".modal-input-for-youtube").remove();
+    	$(".modal-input-for-fb").remove();
+    	$(".modal_inputs_for_hyper").remove();
+    	$(".modal_input_for_icon").remove();
+    	$(".modal_input_for_snc_icon").remove();
+    	$(".modal_inputs_for_hypertext").remove();
+    	$(".modal_inputs_for_box_hyper").remove();
     	removeBox();
+
     	
     	var len=$('.imageanchor').length,i=0;		
 		while(i<len){
@@ -2214,10 +2233,10 @@ function myFunction(){
 				'href':$('.boxanchor').eq(j).siblings('.duplicate-box-anchor').attr('href'),
 				'target':$('.boxanchor').eq(j).siblings('.duplicate-box-anchor').attr('target')//////////////////added
 			});
-			$('.boxanchor').eq(j).css({
+			/*$('.boxanchor').eq(j).css({
 				'height':$(".boxanchor").eq(j).parent().css("height"),
 				'width':$(".boxanchor").eq(j).parent().css("width")
-			});
+			});*/
 			j++;
 		}
 
@@ -2264,16 +2283,23 @@ function view(){
 removeBox();
   var w = window.open();
   var wstyle= css($("#body"));
+  $("bodypre").remove();
   $(w.document.body).css(wstyle);
+
+
+
   var html = $("#body").html();
-  var html1=html.substr(4249);
-    
-  var html2=html1.replace("bodypre","body");
+  var html1=html.substr(28103);
+  var html2=html1.replace(".5px","0");
   var html3=html2.replace("tRuE", "false");
   var html4=html3.replace("move;", "auto;");
     $(w.document.body).html(html4);
-}
 
+    var bp = document.createElement("bodypre");
+    
+    $(bp).css(wstyle);
+    $("body").append(bp);
+}
 
 
 function css(a) {
@@ -2307,4 +2333,3 @@ function css2json(css) {
     }
     return s;
 }
-

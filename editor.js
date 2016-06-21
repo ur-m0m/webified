@@ -6,6 +6,7 @@ var y=300;
 	var body_has_bgimage=false;	
 		$("#bg").change(function(){
 			$("body").css("background-color",$("#bg").val());
+			$("bodypre").css("background-color",$("#bg").val());
 		});
 	
 		$(".bgcolor").click(function(){
@@ -54,10 +55,12 @@ $(document).on('click','.attach-bgimage',function(e){
 });
 $(document).on('click','.fixed-bg',function(e){
 	$("body").css('background-attachment','fixed');
+	$("bodypre").css('background-attachment','fixed');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.scroll-bg',function(e){
 	$("body").css('background-attachment','scroll');
+	$("bodypre").css('background-attachment','scroll');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.size-bgimage',function(e){
@@ -65,14 +68,17 @@ $(document).on('click','.size-bgimage',function(e){
 });
 $(document).on('click','.cover-bgsize',function(e){
 	$("body").css('background-size','cover');
+	$("bodypre").css('background-size','cover');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.contain-bgsize',function(e){
 	$("body").css('background-size','contain');
+	$("bodypre").css('background-size','contain');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.auto-bgsize',function(e){
 	$("body").css('background-size','auto');
+	$("bodypre").css('background-size','auto');
 	e.preventDefault();e.stopPropogation();
 });/**/
 var dialog0=$(".modal-input-for-bg-sizes").dialog({
@@ -110,11 +116,13 @@ $(document).on('click','.input-bgsize',function(e){
 });
 function size_the_bgimage(){
 	$("body").css('background-size',$(".x-input-for-bg-size").val()+'% '+$(".y-input-for-bg-size").val()+'%');
+	$("bodypre").css('background-size',$(".x-input-for-bg-size").val()+'% '+$(".y-input-for-bg-size").val()+'%');
 	dialog0.dialog("close");
 }
 
 $(document).on('click','.delete-bgimage',function(e){
 	$("body").css('background-image','');
+	$("bodypre").css('background-image','');
 	$('.editbg').remove();
 	body_has_bgimage=false;
 	e.stopPropogation();
@@ -125,18 +133,22 @@ $(document).on('click','.repeat-bgimage',function(e){
 		 
 $(document).on('click','.repeat-both',function(e){
 	$("body").css('background-repeat','repeat');
+	$("bodypre").css('background-repeat','repeat');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.repeat-x',function(e){
 	$("body").css('background-repeat','repeat-x');
+	$("bodypre").css('background-repeat','repeat-x');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.repeat-y',function(e){
 	$("body").css('background-repeat','repeat-y');
+	$("bodypre").css('background-repeat','repeat-y');
 	e.preventDefault();e.stopPropogation();
 });
 $(document).on('click','.no-repeat',function(e){
 	$("body").css('background-repeat','no-repeat');
+	$("bodypre").css('background-repeat','no-repeat');
 	e.preventDefault();e.stopPropogation();
 });
 //var  appendedoptionsforbgpos_seen=false;
@@ -209,6 +221,7 @@ $(document).on('click','.position-bgimage',function(e){
 });
 function pos_the_bgimage(){
 	$("body").css('background-position',$(".x-input-for-bg-pos").val()+'% '+$(".y-input-for-bg-pos").val()+'%');
+	$("bodypre").css('background-position',$(".x-input-for-bg-pos").val()+'% '+$(".y-input-for-bg-pos").val()+'%');
 	dialog9.dialog("close");
 }
 /*$(document).on('click','.left-percentbgimage',function(e){
@@ -239,6 +252,7 @@ $(document).on('change','.top-percentbgimage',function(e){
 
 		function imageIsLoadedforbg(e){
 			$('body').css('background-image','url("'+e.target.result+'")');
+			$('bodypre').css('background-image','url("'+e.target.result+'")');
 			body_has_bgimage=true;
 		}
 		$("#bgimage").click(function(){
@@ -286,6 +300,7 @@ var form1=dialog1.find("form").on('submit',function(e){
 });
 function addurlbgimage(){
 	$("body").css('background','url("'+$(".url-input-for-bg-image").val()+'")');
+	$("bodypre").css('background','url("'+$(".url-input-for-bg-image").val()+'")');
 	dialog1.dialog("close");
 	body_has_bgimage=true;
 }
@@ -389,6 +404,7 @@ function addurlbgimage(){
 			'</div>'+
 			'</div>';
 			$("body").append(imag);
+			
 			$(".imagediv").draggable().resizable();
 			x=x+50;
 			y=y+50;
