@@ -460,6 +460,7 @@ dialoglite=$(".modal_inputs_for_hypertext").dialog({
 	height:350,
 	modal:true,
 	buttons:{
+		"OK":link_to_text,
 		Cancel:function(){
 			dialoglite.dialog("close");
 		}		
@@ -1231,10 +1232,10 @@ var dialogl3=$(".modal_inputs_for_box_hyper").dialog({
 	height:350,
 	modal:true,
 	buttons:{
-		//"OK":function(e){
+		"OK":function(){
 			//e.preventDefault();
-			//link_to_urlimage();
-		//}
+			link_to_box();
+		},
 		Cancel:function(){
 			dialogl3.dialog("close");
 		}
@@ -1269,8 +1270,8 @@ $(".box-edit-shadow-options").remove();
 $(".box-edit-border-options").remove();
 $(".box-edit-opacity-options").remove();
 
-var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-border-options">Border-Width : <input type="text" name="box_border_width" placeholder="Border width :  '+$("."+previous_clicked_classname).css("border-width")+'" class="box-option-edit-border-width-select" style="width:150px;"></div>	';
-var text2='<div style="position:absolute;top:70px;left:10px;display:inline;" class="box-edit-border-options"><br>Border-Radius : <br><input type="text" name="box_border_top_left_radius" placeholder="Top-Left :  '+$("."+previous_clicked_classname).css("border-top-left-radius")+'" class="box-option-edit-border-radius-topleft-select" style="width:120px;margin-right:10px;">\
+var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-border-options"><span style="background-color:#666666;color:white;">Border-Width : </span><input type="text" name="box_border_width" placeholder="Border width :  '+$("."+previous_clicked_classname).css("border-width")+'" class="box-option-edit-border-width-select" style="width:150px;"></div>	';
+var text2='<div style="position:absolute;top:70px;left:10px;display:inline;" class="box-edit-border-options"><br><span style="background-color:#666666;color:white;">Border-Radius : </span><br><input type="text" name="box_border_top_left_radius" placeholder="Top-Left :  '+$("."+previous_clicked_classname).css("border-top-left-radius")+'" class="box-option-edit-border-radius-topleft-select" style="width:120px;margin-right:10px;">\
 <input type="text" name="box_border_top_rightradius" placeholder="Top-Right :  '+$("."+previous_clicked_classname).css("border-top-right-radius")+'" class="box-option-edit-border-radius-topright-select" style="width:120px;"><br>\
 <input type="text" name="box_border_bottom_left_radius" placeholder="Bottom-left :  '+$("."+previous_clicked_classname).css("border-bottom-left-radius")+'" class="box-option-edit-border-radius-bottomleft-select" style="width:120px;margin-right:10px;">\
 <input type="text" name="box_border_bottom_right_radius" placeholder="Bottom-right :  '+$("."+previous_clicked_classname).css("border-bottom-right-radius")+'" class="box-option-edit-border-radius-bottomright-select" style="width:120px;"></div>	';
@@ -1390,10 +1391,10 @@ $(document).on('change', '.box-option-edit-border-style',function(e){
 		$(".box-edit-opacity-options").remove();
 		var result=$("."+previous_clicked_classname).css("box-shadow").split(/\s+/);
 
-		var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-shadow-options">Shadow-Distance : <input type="text" name="box_shadow_distance" placeholder="Shadow Distance :  '+result[6]+'" class="box-option-edit-shadow-distance-select" style="width:150px;"></div>	';
-		var text2='<div style="position:absolute;top:70px;left:10px;display:inline;" class="box-edit-shadow-options"><br>Shadow Displacement from centre : <br><input type="text" name="box_shadow_horizontal" placeholder="Horizontal Distannce :  '+result[3]+'" class="box-option-edit-shadow-horizontal-select" style="width:120px;margin-right:10px;">\
+		var text1='<div style="position:absolute;top:50px;left:10px;display:inline;" class="box-edit-shadow-options"><span style="background-color:#666666;color:white;">Shadow-Distance :</span> <input type="text" name="box_shadow_distance" placeholder="Shadow Distance :  '+result[6]+'" class="box-option-edit-shadow-distance-select" style="width:150px;"></div>	';
+		var text2='<div style="position:absolute;top:70px;left:10px;display:inline;;" class="box-edit-shadow-options"><br><span style="background-color:#666666;color:white;">Shadow Displacement from centre :</span> <br><input type="text" name="box_shadow_horizontal" placeholder="Horizontal Distannce :  '+result[3]+'" class="box-option-edit-shadow-horizontal-select" style="width:120px;margin-right:10px;">\
 		<input type="text" name="box_shadow_vertical" placeholder="Vertical Distance :  '+result[4]+'" class="box-option-edit-shadow-vertical-select" style="width:120px;"></div>';
-		var text3='<div style="position:absolute;top:140px;left:10px;display:inline;" class="box-edit-shadow-options"><br>Shadow Blur : <input type="text" name="box_shadow_blur" placeholder="Shadow Blur :  '+result[5]+'" class="box-option-edit-shadow-blur-select" style="width:150px;"></div>	';
+		var text3='<div style="position:absolute;top:140px;left:10px;display:inline;" class="box-edit-shadow-options"><br><span style="background-color:#666666;color:white;">Shadow Blur : </span><input type="text" name="box_shadow_blur" placeholder="Shadow Blur :  '+result[5]+'" class="box-option-edit-shadow-blur-select" style="width:150px;"></div>	';
 
 
 		$(".box-option-edit2").append(text1,text2,text3);
@@ -2222,7 +2223,7 @@ function myFunction(){
 		while(k<lengt){
 			$($('.iconanchor')[k]).attr({
 				'href':$('.iconanchor').eq(k).siblings('.duplicate-anchor').attr('href'),
-				'target':$('.duplicate-icon-anchor').eq(k).siblings('.duplicate-anchor').attr('target')
+				'target':$('.iconanchor').eq(k).siblings('.duplicate-anchor').attr('target')
 			});
 			k++;
 		}
@@ -2275,7 +2276,7 @@ function preView(){
 //$(".box-option-edit2").remove();
 
  document.getElementById("modal").style.display="block";
-	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'></span><br>You will now be shown the way page will appear after saving...<br><br><span onclick='view()' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
+	document.getElementById("modal").innerHTML="<p class='modal-content'><span class='modal-title'>Webified</span><br><span class='modal-heading'></span><br>You will now be shown the way page will appear after saving. Note that only positions of elements are displayed i.e. animations won't run.<br><br><span onclick='view()' cursor='auto' style=' text-decoration:none; width:150px; display:inline-block;color:green;font-size: 25px' class='glyphicon glyphicon-ok'></span><span onclick='removeBox()' style='display: inline-block;color:red;width:150px; font-size:25px' class='glyphicon glyphicon-remove'></span><br><br></p></div>";
 
 }
 function delFinal(){document.getElementById('hidform1').submit();}
@@ -2283,22 +2284,17 @@ function view(){
 removeBox();
   var w = window.open();
   var wstyle= css($("#body"));
-  $("bodypre").remove();
   $(w.document.body).css(wstyle);
 
 
-
   var html = $("#body").html();
-  var html1=html.substr(28103);
+  //html.("bodypre").remove();
+  var html1=html.substr(28504);
   var html2=html1.replace(".5px","0");
   var html3=html2.replace("tRuE", "false");
   var html4=html3.replace("move;", "auto;");
     $(w.document.body).html(html4);
-
-    var bp = document.createElement("bodypre");
-    
-    $(bp).css(wstyle);
-    $("body").append(bp);
+   
 }
 
 

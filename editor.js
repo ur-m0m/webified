@@ -285,7 +285,7 @@ var dialog1=$(".modal-input-for-bgimage").dialog({
 	width:350,
 	modal:true,
 	buttons:{
-		//"OK": addurlbgimage,
+		"OK": addurlbgimage,
 		Cancel:function(){
 			dialog1.dialog("close");
 		}
@@ -404,7 +404,7 @@ function addurlbgimage(){
 			'</div>'+
 			'</div>';
 			$("body").append(imag);
-			
+
 			$(".imagediv").draggable().resizable();
 			x=x+50;
 			y=y+50;
@@ -481,6 +481,7 @@ var dialogl1=$(".modal_inputs_for_hyper").dialog({
 	height:350,
 	modal:true,
 	buttons:{
+		"OK":link_to_image,
 		Cancel:function(){
 			dialogl1.dialog("close");
 		}		
@@ -860,7 +861,7 @@ function addicon(){
 	
 	if($("input[name='type_of_icon']:checked").val()=="fa" && $(".text_for_fa").val()!=""){
 		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" style="cursor:move;" class="iconanchor"><i class="iconic '+$(".text_for_fa").val()+'" style="font-size:30px;color:black;"></i></a>'+
-	'<a class="duplicate-icon-anchor" href="#"></a>'+
+	'<a class="duplicate-anchor" href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+	
 	'<div class="dropdown animate-drop">'+
@@ -882,7 +883,7 @@ function addicon(){
 
 	if($("input[name='type_of_icon']:checked").val()=="material" && $(".text_for_mi").val()!=""){
 		var iconvar='<div class="icondiv" style="height:auto;width:auto; position:absolute; top:'+x+'px; left:'+y+'px;"><a href="#" class="iconanchor" style="cursor:move;"><i class="iconic material-icons" style="color:black;font-size:30px;">'+$(".text_for_mi").val()+'</i></a>'+
-	'<a class="duplicate-icon-anchor"  href="#"></a>'+
+	'<a class="duplicate-anchor"  href="#"></a>'+
 	'<div class="btn-group editicon" style="display:none;">'+
 	'<button class="btn btn-primary sizencolor-icon">Size and Color<span class="caret"></span></button>'+
 	'<div class="dropdown animate-drop">'+
@@ -1533,6 +1534,6 @@ $(window).scroll(function() {
 
 function info(){
 	document.getElementById("modal").style.display="block";
-	document.getElementById("modal").innerHTML="<p style:'width:500px;' class='modal-content'><span class='modal-title'>Webified<span onclick='removeBox()' style='display: inline-block;color:#333333;width:50px; font-size:25px position: absolute;left:280px;' class='glyphicon glyphicon-remove'></span></span><br><b>Hi! This is a quick tutorial and tips to make better use of our Website</b><br><br><br>This blankspace provided to you is your workspace and you can add anything from the 'ADD' button. <br> Note that the blue outline will not be present in the final result. That is just to show boundaries of elements.<br><b>Background</b><br> You can change background color or image. Image can be set by uploading one or by pasting a url. We usually don't provide OK button for dialog boxes for urls but pressing 'Enter' would do the job. Background images can be further edited by clicking anywhere on the image for the options. <br><b>Text</b><br>In Text, we have provided four options: Large and small headings, large and small paragragh. Their font-size can however be changed in options which can simply be accessed by clicking on the text. Animate option has two further options: Animation Type, Animation Advanced Options; the latter being only accessible after selecting a type in the Animation Type. Clicking in the text field enables editing. Clicking and dragging the text element marked by border enabled dragging. Resizing is also available by dragging the right bottom corner. On clicking edit in the options, you will be shown further more options: font-family, font-size, color, bold, italics. For these to work text must be selected. This rule applies for even Hyperlink.<br> <b>Image </b> <br> Images can be added similar to background image. Multiple images can be added but image with the same name cannot be added consecutively. The editing options here are Opacity, Shape, Animation and Hyperlink. Editing shape option gives shape to the edges of image. <br><b>Video</b><br> Facebook and YouTube videos can be added here. They are resizable and can be dragged around. We allow fullscreen by default. <br><b>Buttons</b><br> These are text boxes associated with links. these can be joined together to make a navigation bar, for instance. the content and the link is editable. <br><b> Lists</b> <br> We have few types of list which are editable and can be positioned anywhere. Each entry just equires a press of 'Enter'.<br><b>Icons</b><br>This is to add different variety of icons in 'Font Awesome' and 'Google Material Icons'. The library of icons can be accessed through the links in the dialog box itself. When entry for google material is more than a word, please put underscore (_) between the words.<br><b> Box</b> <br> This adds a rectangular box with black border. This is resizable and draggable. The edit options have shadow, border, opacity and color. Shadow in right and bottom directions can be set and with blur. Border type can be changed and border radii can be changed. A rectangular box can be made into an elliptical box purely by giving appropriately large radii values. Finally,  box can be given border color or fill-in color or both.     <br></p></div>";
+	document.getElementById("modal").innerHTML="<p style:'width:500px;' class='modal-content'><span class='modal-title'>Webified<span onclick='removeBox()' style='display: inline-block;color:#333333;width:50px; font-size:25px position: absolute;left:280px;' class='glyphicon glyphicon-remove'></span></span><br><b>Hi! This is a quick tutorial and tips to make better use of our Website</b><br><br><br>This blankspace provided to you is your workspace and you can add anything from the 'ADD' button. <br> Note that the blue outline will not be present in the final result. That is just to show boundaries of elements. Even note that latest added element always overlaps the previously added ones.<br><b>Background</b><br> You can change background color or image. Image can be set by uploading one or by pasting a url. Background images can be further edited by clicking anywhere on the image for the options. <br><b>Text</b><br>In Text, we have provided four options: Large and small headings, large and small paragragh. Their font-size can however be changed in options which can simply be accessed by clicking on the text. Animate option has two further options: Animation Type, Animation Advanced Options; the latter being only accessible after selecting a type in the Animation Type. Clicking in the text field enables editing. Clicking and dragging the text element marked by border enabled dragging. Resizing is also available by dragging the right bottom corner. On clicking edit in the options, you will be shown further more options: font-family, font-size, color, bold, italics. For these to work text must be selected. This rule applies for even Hyperlink.<br> <b>Image </b> <br> Images can be added similar to background image. Multiple images can be added but image with the same name cannot be added consecutively. The editing options here are Opacity, Shape, Animation and Hyperlink. Editing shape option gives shape to the edges of image. <br><b>Video</b><br> Facebook and YouTube videos can be added here. They can be dragged around but only YouTube can be resized. We allow fullscreen by default. <br><b>Buttons</b><br> These are text boxes associated with links. these can be joined together to make a navigation bar, for instance. the content and the link is editable. <br><b> Lists</b> <br> We have few types of list which are editable and can be positioned anywhere. Each entry just requires a press of 'Enter'.<br><b>Icons</b><br>This is to add different variety of icons in 'Font Awesome' and 'Google Material Icons'. The library of icons can be accessed through the links in the dialog box itself. Here it is very important that the input text is exactly correct. When entry for google material is more than a word, please put underscore (_) between the words.<br><b> Box</b> <br> This adds a rectangular box with black border. This is resizable and draggable. The edit options have shadow, border, opacity and color. Shadow in right and bottom directions can be set and with blur. Border type can be changed and border radii can be changed. A rectangular box can be made into an elliptical box purely by giving appropriately large radii values. Finally,  box can be given border color or fill-in color or both.     <br></p></div>";
 
 	}

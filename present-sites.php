@@ -32,7 +32,7 @@ $k= $j+1;
 if($j==1)echo " We currently have 1 site..<br><br>";
 else echo " We currently have $j sites..<br><br>";
 $lines = file($myFile);
-for($i=1; $i<$k; $i++){echo "<a href=$files[$i] style='border-radius:9px;padding:1.5%; height:3%;width:60%; position:absolute; left:20%; display:inline-block;color:black;'>$files[$i]</a><br><br><br>";}
+for($i=1; $i<$k; $i++){echo "<a href=$files[$i] target=_blank style='border-radius:9px;padding:1.5%; height:3%;width:60%; position:absolute; left:20%; display:inline-block;color:black;'>$files[$i]</a><br><br><br>";}
 ?></p>
 </body>
 </html>
